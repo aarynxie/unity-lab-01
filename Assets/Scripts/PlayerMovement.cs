@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
 
     //reset game variables
     public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI scoreTextGameOver;
     public GameObject enemies;
 
     public JumpOverGoomba jumpOverGoomba;
@@ -60,7 +61,7 @@ public class PlayerMovement : MonoBehaviour
             Time.timeScale = 0.0f;
 
             // draw gameover screen
-            gameOverUi.transform.position = new Vector3(8.5f, 85.0f, 0.0f);
+            gameOverUi.transform.localPosition = new Vector3(8.5f, 85.0f, 0.0f);
         }
     } 
 
@@ -87,7 +88,7 @@ public class PlayerMovement : MonoBehaviour
 
     // restart game
     public void RestartButtonCallback(int input) {
-        Debug.Log("Restart!");
+        //Debug.Log("Restart!");
         ResetGame();
         Time.timeScale = 1.0f;
     }
@@ -101,13 +102,18 @@ public class PlayerMovement : MonoBehaviour
         marioSprite.flipX = false;
         // reset score
         scoreText.text = "Score: 0";
+        scoreTextGameOver.text = "Score: 0";
         // reset Goomba
         
+        //Debug.Log("ResetGame is called");
         foreach (Transform eachChild in enemies.transform)
         {
             eachChild.transform.localPosition = eachChild.GetComponent<EnemyMovement>().startPosition;
         }
 
         jumpOverGoomba.score = 0;
+
+        // reset restart screen
+        gameOverUi.transform.localPosition = new Vector3(0.0f, -463.0f, 0.0f);
     }
 }
