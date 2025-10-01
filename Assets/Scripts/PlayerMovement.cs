@@ -36,6 +36,8 @@ public class PlayerMovement : MonoBehaviour
     [System.NonSerialized]
     public bool alive = true;
 
+    public Transform gameCamera;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -144,6 +146,8 @@ public class PlayerMovement : MonoBehaviour
         marioAnimator.SetTrigger("gameRestart");
         alive = true;
 
+        gameCamera.position = new Vector3(0, 0, -10);
+
         //Debug.Log("ResetGame is called");
         foreach (Transform eachChild in enemies.transform)
         {
@@ -153,7 +157,7 @@ public class PlayerMovement : MonoBehaviour
         jumpOverGoomba.score = 0;
 
         // reset restart screen
-        gameOverUi.transform.localPosition = new Vector3(0.0f, -463.0f, 0.0f);
+        gameOverUi.transform.localPosition = new Vector3(0.0f, -1563.0f, 0.0f);
     }
 
     void PlayJumpSound()
@@ -176,6 +180,6 @@ public class PlayerMovement : MonoBehaviour
     {
 
         // draw gameover screen
-        gameOverUi.transform.localPosition = new Vector3(8.5f, 85.0f, 0.0f);
+        gameOverUi.transform.localPosition = new Vector3(8.5f, 295.0f, 0.0f);
     }
 }
