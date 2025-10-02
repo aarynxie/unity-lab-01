@@ -10,7 +10,9 @@ public class CoinPopOut : MonoBehaviour
 
     public Rigidbody2D blockBody;
 
-    public AudioSource coinAudio;
+
+
+    public bool isBrick;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -26,14 +28,21 @@ public class CoinPopOut : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Mario"))
         {
+            //Debug.Log(blockAnimator.GetBool("GotCoin"));
             if (!blockAnimator.GetBool("GotCoin"))
             {
-                coinAnimator.SetTrigger("GotCoin");
+                if (coinAnimator != null)
+                    coinAnimator.SetTrigger("GotCoin");
             }
             blockAnimator.SetBool("GotCoin", true);
+            if (isBrick)
+            {
+                blockAnimator.SetTrigger("Bounce");
+                Debug.Log("setting triggle to bounce");
+            }
 
 
-            Debug.Log("collided with coin");
+
             // if mario hits block tagged with coin
             // trigger coin animation
             //turn rigid body to static
@@ -50,10 +59,5 @@ public class CoinPopOut : MonoBehaviour
             blockBody.bodyType = RigidbodyType2D.Static;
         }
 
-    }
-
-    void PlayCoinSound()
-    {
-        coinAudio.PlayOneShot(coinAudio.clip);
     }
 }
