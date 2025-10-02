@@ -257,7 +257,7 @@ AnimationClip:
   m_HasGenericRootTransform: 1
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0.06666667
+  - time: 1.2333333
     functionName: PlayCoinSound
     data: 
     objectReferenceParameter: {fileID: 0}
