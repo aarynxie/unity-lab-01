@@ -86,6 +86,20 @@ public class PlayerMovement : MonoBehaviour
             marioAnimator.SetBool("onGround", onGroundState);
         }
 
+        // coin block collision
+        if (col.gameObject.CompareTag("Coin"))
+        {
+
+            // if mario hits block tagged with coin
+            // trigger coin animation
+            //turn rigid body to static 
+            // only if mario is going up
+            // if (marioBody.linearVelocity.y > 0.1f)
+
+            // blockBody.bodyType = RigidbodyType2D.Static;
+            // Debug.Log("mario hit block");
+        }
+
 
     }
 

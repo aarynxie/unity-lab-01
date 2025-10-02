@@ -2780,7 +2780,7 @@ GameObject:
   - component: {fileID: 1452337892}
   m_Layer: 0
   m_Name: Mario
-  m_TagString: Untagged
+  m_TagString: Mario
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2883,6 +2883,7 @@ MonoBehaviour:
   marioDeath: {fileID: 8300000, guid: ca1b58f57029744549fe7a2942c65685, type: 3}
   deathImpulse: 15
   gameCamera: {fileID: 302132657}
+  blockBody: {fileID: 2134000649}
 --- !u!50 &1452337888
 Rigidbody2D:
   serializedVersion: 5
@@ -3454,6 +3455,11 @@ Transform:
   - {fileID: 786977923}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1804332652 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4201545159209567107, guid: 81c29148d7f9e44b9bb4339807fd67f4, type: 3}
+  m_PrefabInstance: {fileID: 8236800850534297716}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1849393294 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4395376830886661596, guid: 76fa45fbcdd604c8cb42127a2f7a205b, type: 3}
@@ -3675,6 +3681,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2111579771}
   m_CullTransparentMesh: 1
+--- !u!1 &2134000646 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1604786127404195200, guid: 81c29148d7f9e44b9bb4339807fd67f4, type: 3}
+  m_PrefabInstance: {fileID: 8236800850534297716}
+  m_PrefabAsset: {fileID: 0}
+--- !u!50 &2134000649 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 6981615233841890275, guid: 81c29148d7f9e44b9bb4339807fd67f4, type: 3}
+  m_PrefabInstance: {fileID: 8236800850534297716}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2134000652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2134000646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f079d4e185139498f85f363b69f3c581, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CoinPopOut
+  blockAnimator: {fileID: 2134000654}
+  coinAnimator: {fileID: 1804332652}
+--- !u!95 &2134000654
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2134000646}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 05f0e124b68944f4dab5bf3d7e6ce005, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2136677742
 GameObject:
   m_ObjectHideFlags: 0
@@ -4058,6 +4110,42 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1777262687}
     m_Modifications:
+    - target: {fileID: 1604786127404195200, guid: 81c29148d7f9e44b9bb4339807fd67f4, type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
+    - target: {fileID: 2590503031573822585, guid: 81c29148d7f9e44b9bb4339807fd67f4, type: 3}
+      propertyPath: m_Points.Array.data[0].x
+      value: -0.287148
+      objectReference: {fileID: 0}
+    - target: {fileID: 2590503031573822585, guid: 81c29148d7f9e44b9bb4339807fd67f4, type: 3}
+      propertyPath: m_Points.Array.data[0].y
+      value: -0.5281743
+      objectReference: {fileID: 0}
+    - target: {fileID: 2590503031573822585, guid: 81c29148d7f9e44b9bb4339807fd67f4, type: 3}
+      propertyPath: m_Points.Array.data[1].x
+      value: 0.23356342
+      objectReference: {fileID: 0}
+    - target: {fileID: 2590503031573822585, guid: 81c29148d7f9e44b9bb4339807fd67f4, type: 3}
+      propertyPath: m_Points.Array.data[1].y
+      value: -0.5242921
+      objectReference: {fileID: 0}
+    - target: {fileID: 3681166893691150108, guid: 81c29148d7f9e44b9bb4339807fd67f4, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4115535992066146056, guid: 81c29148d7f9e44b9bb4339807fd67f4, type: 3}
+      propertyPath: m_Points.Array.data[0].x
+      value: 0.5358305
+      objectReference: {fileID: 0}
+    - target: {fileID: 4115535992066146056, guid: 81c29148d7f9e44b9bb4339807fd67f4, type: 3}
+      propertyPath: m_Points.Array.data[0].y
+      value: 0.5362142
+      objectReference: {fileID: 0}
+    - target: {fileID: 4115535992066146056, guid: 81c29148d7f9e44b9bb4339807fd67f4, type: 3}
+      propertyPath: m_Points.Array.data[1].x
+      value: 0.5403991
+      objectReference: {fileID: 0}
     - target: {fileID: 5536168411943049960, guid: 81c29148d7f9e44b9bb4339807fd67f4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -4098,6 +4186,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5773311480643133760, guid: 81c29148d7f9e44b9bb4339807fd67f4, type: 3}
+      propertyPath: m_Points.Array.data[0].x
+      value: -0.5319505
+      objectReference: {fileID: 0}
+    - target: {fileID: 5773311480643133760, guid: 81c29148d7f9e44b9bb4339807fd67f4, type: 3}
+      propertyPath: m_Points.Array.data[0].y
+      value: -0.32543108
+      objectReference: {fileID: 0}
+    - target: {fileID: 5773311480643133760, guid: 81c29148d7f9e44b9bb4339807fd67f4, type: 3}
+      propertyPath: m_Points.Array.data[1].x
+      value: -0.5368748
+      objectReference: {fileID: 0}
+    - target: {fileID: 5773311480643133760, guid: 81c29148d7f9e44b9bb4339807fd67f4, type: 3}
+      propertyPath: m_Points.Array.data[1].y
+      value: 0.54458153
+      objectReference: {fileID: 0}
     - target: {fileID: 8765299572519665526, guid: 81c29148d7f9e44b9bb4339807fd67f4, type: 3}
       propertyPath: m_Name
       value: Question-Box-Spring
@@ -4105,7 +4209,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1604786127404195200, guid: 81c29148d7f9e44b9bb4339807fd67f4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2134000652}
+    - targetCorrespondingSourceObject: {fileID: 1604786127404195200, guid: 81c29148d7f9e44b9bb4339807fd67f4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2134000654}
   m_SourcePrefab: {fileID: 100100000, guid: 81c29148d7f9e44b9bb4339807fd67f4, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
