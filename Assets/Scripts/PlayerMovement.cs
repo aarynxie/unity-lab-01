@@ -38,6 +38,8 @@ public class PlayerMovement : MonoBehaviour
 
     public Transform gameCamera;
 
+    int collisionLayerMask = (1 << 3) | (1 << 7) | (1 << 8);
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -72,7 +74,13 @@ public class PlayerMovement : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.CompareTag("Ground") && !onGroundState)
+        // if ((col.gameObject.CompareTag("Ground") || col.gameObject.CompareTag("Enemies") || col.gameObject.CompareTag("Enemies")) && !onGroundState)
+        // {
+        //     onGroundState = true;
+        //     marioAnimator.SetBool("onGround", onGroundState);
+        // }
+
+        if (((collisionLayerMask & (1 << col.transform.gameObject.layer)) > 0) & !onGroundState)
         {
             onGroundState = true;
             marioAnimator.SetBool("onGround", onGroundState);

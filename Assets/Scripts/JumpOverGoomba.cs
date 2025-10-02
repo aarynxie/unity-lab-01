@@ -20,19 +20,21 @@ public class JumpOverGoomba : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+
     }
 
-    void FixedUpdate() 
+    void FixedUpdate()
     {
         //mario jumps
-        if (Input.GetKeyDown("space") && onGroundCheck()) {
+        if (Input.GetKeyDown("space") && onGroundCheck())
+        {
+
             onGroundState = false;
             countScoreState = true;
         }
 
         // when jumping, and Goomba is near Mario and we haven't registered score
-        if (!onGroundState && countScoreState) 
+        if (!onGroundState && countScoreState)
         {
             if (Mathf.Abs(transform.position.x - enemyLocation.position.x) < 0.5f)
             {
@@ -47,10 +49,10 @@ public class JumpOverGoomba : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        if(col.gameObject.CompareTag("Ground")) onGroundState = true;
+        if (col.gameObject.CompareTag("Ground")) onGroundState = true;
     }
 
-    private bool onGroundCheck() 
+    private bool onGroundCheck()
     {
         if (Physics2D.BoxCast(transform.position, boxSize, 0, -transform.up, maxDistance, layerMask))
         {
@@ -67,7 +69,7 @@ public class JumpOverGoomba : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     void OnDrawGizmos()
