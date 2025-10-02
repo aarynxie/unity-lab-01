@@ -249,7 +249,6 @@ MonoBehaviour:
   blockAnimator: {fileID: 1304875583480533713}
   coinAnimator: {fileID: 4201545159209567107}
   blockBody: {fileID: 6981615233841890275}
-  coinAudio: {fileID: 1680978895260249682}
   isBrick: 0
 --- !u!95 &1304875583480533713
 Animator:
@@ -471,8 +470,8 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -0.50871706, y: 0.5493544}
-  - {x: 0.50834036, y: 0.54541296}
+  - {x: -0.5007839, y: 0.49778903}
+  - {x: 0.4964404, y: 0.49781412}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
@@ -515,7 +514,7 @@ EdgeCollider2D:
   m_EdgeRadius: 0
   m_Points:
   - {x: -0.5319505, y: -0.32543108}
-  - {x: -0.5368748, y: 0.54458153}
+  - {x: -0.52894163, y: 0.4612836}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
@@ -557,7 +556,7 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: 0.5358305, y: 0.5362142}
+  - {x: 0.5358305, y: 0.46878254}
   - {x: 0.5403991, y: -0.31138656}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
