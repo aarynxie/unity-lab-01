@@ -50,4 +50,23 @@ public class ActionManager : MonoBehaviour
             moveCheck.Invoke(0);
         }
     }
+
+    public void OnClickAction(InputAction.CallbackContext context)
+    {
+        if (context.started)
+            Debug.Log("mouse click started");
+        else if (context.performed)
+            Debug.Log("mouse click performed");
+        else if (context.canceled)
+            Debug.Log("mosue click cancelled");
+    }
+
+    public void OnPointerAction(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            Vector2 point = context.ReadValue<Vector2>();
+            Debug.Log($"Point detection: {point}");
+        }
+    }
 }
