@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2062791091546021273}
   - component: {fileID: 9027767750854142599}
   - component: {fileID: 3685799932846035511}
+  - component: {fileID: 1541147179465312498}
   m_Layer: 0
   m_Name: Coin
   m_TagString: Untagged
@@ -225,3 +226,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CoinSound
   coinAudio: {fileID: 9027767750854142599}
+--- !u!114 &1541147179465312498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3990259511875727746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0f1a11ed86e3402696cf2d4b8b7bbd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AnimationEventIntTool
+  parameter: 0
+  useInt:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11500000, guid: 872bdd642f49a487ca465fa1b9701f58, type: 3}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

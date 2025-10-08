@@ -24,7 +24,7 @@ public class EnemyMovement : MonoBehaviour
         ComputeVelocity();
     }
 
-    void ComputeVelocity() 
+    void ComputeVelocity()
     {
         velocity = new Vector2((moveRight) * maxOffset / enemyPatroltime, 0);
     }
@@ -34,23 +34,32 @@ public class EnemyMovement : MonoBehaviour
         enemyBody.MovePosition(enemyBody.position + velocity * Time.fixedDeltaTime);
     }
 
-    void OnTriggerEnter2D(Collider2D other) {
+    void OnTriggerEnter2D(Collider2D other)
+    {
         //Debug.Log(other.gameObject.name);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Mathf.Abs(enemyBody.position.x - originalX) < maxOffset) 
+        if (Mathf.Abs(enemyBody.position.x - originalX) < maxOffset)
         {
             Movegoomba();
         }
-        else 
+        else
         {
             // change direction
             moveRight *= -1;
             ComputeVelocity();
             Movegoomba();
         }
+    }
+
+    public void GameRestart()
+    {
+        transform.localPosition = startPosition;
+        originalX = transform.position.x;
+        moveRight = -1;
+        ComputeVelocity();
     }
 }

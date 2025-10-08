@@ -6,8 +6,6 @@ using TMPro;
 public class JumpOverGoomba : MonoBehaviour
 {
     public Transform enemyLocation;
-    public TextMeshProUGUI scoreText;
-    public TextMeshProUGUI scoreTextGameOver;
     private bool onGroundState;
 
     [System.NonSerialized] // makes the following public variable hidden from the inspector
@@ -17,34 +15,38 @@ public class JumpOverGoomba : MonoBehaviour
     public Vector3 boxSize;
     public float maxDistance;
     public LayerMask layerMask;
+
+    GameManager gameManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        gameManager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
     }
 
     void FixedUpdate()
     {
         //mario jumps
-        if (Input.GetKeyDown("space") && onGroundCheck())
-        {
+        // if (Input.GetKeyDown("space") && onGroundCheck())
+        // {
 
-            onGroundState = false;
-            countScoreState = true;
-        }
+        //     onGroundState = false;
+        //     countScoreState = true;
+        // }
 
-        // when jumping, and Goomba is near Mario and we haven't registered score
-        if (!onGroundState && countScoreState)
-        {
-            if (Mathf.Abs(transform.position.x - enemyLocation.position.x) < 0.5f)
-            {
-                countScoreState = false;
-                score++;
-                scoreText.text = "Score: " + score.ToString();
-                scoreTextGameOver.text = "Score: " + score.ToString();
-                //Debug.Log(score);
-            }
-        }
+        // // when jumping, and Goomba is near Mario and we haven't registered score
+        // if (!onGroundState && countScoreState)
+        // {
+        //     if (Mathf.Abs(transform.position.x - enemyLocation.position.x) < 0.5f)
+        //     {
+        //         countScoreState = false;
+
+        //         gameManager.IncreaseScore(1);
+        //         // score++;
+        //         // scoreText.text = "Score: " + score.ToString();
+        //         // scoreTextGameOver.text = "Score: " + score.ToString();
+        //         //Debug.Log(score);
+        //     }
+        // }
     }
 
     void OnCollisionEnter2D(Collision2D col)
