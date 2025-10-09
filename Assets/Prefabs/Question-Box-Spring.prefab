@@ -614,6 +614,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coin
       objectReference: {fileID: 0}
+    - target: {fileID: 9027767750854142599, guid: 868e0d5b3621d46289f3dfabbdff8993, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -7780920250900443867, guid: 3b36a4e04181b4d65ad388ecd1f8ae5b, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

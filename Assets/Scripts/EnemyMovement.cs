@@ -14,6 +14,8 @@ public class EnemyMovement : MonoBehaviour
 
     public Vector3 startPosition = new Vector3(0.0f, 0.0f, 0.0f);
 
+    public bool dead = false;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -61,5 +63,19 @@ public class EnemyMovement : MonoBehaviour
         originalX = transform.position.x;
         moveRight = -1;
         ComputeVelocity();
+    }
+
+    // call this method when head trigger is hit
+    public void GoombaDie()
+    {
+        if (!dead)
+        {
+            dead = true;
+
+            // play death animation & sound here
+
+            // destroy gameObject after 1 sec
+            Destroy(gameObject, 1f);
+        }
     }
 }

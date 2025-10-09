@@ -24,8 +24,7 @@ public class PlayerMovement : MonoBehaviour
     public Animator marioAnimator;
 
     public AudioSource marioAudio;
-
-    public AudioClip marioDeath;
+    public AudioSource marioDeathAudio;
     public float deathImpulse = 15;
 
     [System.NonSerialized]
@@ -57,9 +56,9 @@ public class PlayerMovement : MonoBehaviour
         marioAnimator.SetFloat("xSpeed", Mathf.Abs(marioBody.linearVelocity.x));
     }
 
+    // flip mario sprite based on direction
     void FlipMarioSprite(int value)
     {
-        // flip mario sprite based on direction
         if (value == -1 && faceRightState)
         {
             faceRightState = false;
@@ -79,43 +78,23 @@ public class PlayerMovement : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        // if ((col.gameObject.CompareTag("Ground") || col.gameObject.CompareTag("Enemies") || col.gameObject.CompareTag("Enemies")) && !onGroundState)
-        // {
-        //     onGroundState = true;
-        //     marioAnimator.SetBool("onGround", onGroundState);
-        // }
-
+        // if the thing mario is colliding with is on one of the layers defined in collisionLayerMask & mario is not on the ground, set onGroundState to true + update animation
         if (((collisionLayerMask & (1 << col.transform.gameObject.layer)) > 0) & !onGroundState)
         {
             onGroundState = true;
             marioAnimator.SetBool("onGround", onGroundState);
         }
-
-        // coin block collision
-        if (col.gameObject.CompareTag("Coin"))
-        {
-
-            // if mario hits block tagged with coin
-            // trigger coin animation
-            //turn rigid body to static 
-            // only if mario is going up
-            // if (marioBody.linearVelocity.y > 0.1f)
-
-            // blockBody.bodyType = RigidbodyType2D.Static;
-            // Debug.Log("mario hit block");
-        }
-
-
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        // if mario collides with goomba, mario dies
         if (other.gameObject.CompareTag("Enemy") && alive)
         {
             Debug.Log("collided with goomba!");
 
             marioAnimator.Play("mario-die");
-            marioAudio.PlayOneShot(marioDeath);
+            marioDeathAudio.PlayOneShot(marioDeathAudio.clip);
             alive = false;
         }
     }
@@ -125,35 +104,8 @@ public class PlayerMovement : MonoBehaviour
         // only run physics code if mario is alive
         if (alive && moving)
         {
-
             Move(faceRightState == true ? 1 : -1);
         }
-    }
-
-    // restart game
-    public void RestartButtonCallback(int input)
-    {
-        //Debug.Log("Restart!");
-        ResetGame();
-        Time.timeScale = 1.0f;
-    }
-
-    private void ResetGame()
-    {
-
-        // // reset score
-        // scoreText.text = "Score: 0";
-
-        // //Debug.Log("ResetGame is called");
-        // foreach (Transform eachChild in enemies.transform)
-        // {
-        //     eachChild.transform.localPosition = eachChild.GetComponent<EnemyMovement>().startPosition;
-        // }
-
-        // jumpOverGoomba.score = 0;
-
-        // // reset restart screen
-        // gameOverUi.transform.localPosition = new Vector3(0.0f, -1563.0f, 0.0f);
     }
 
     void PlayJumpSound()
@@ -166,19 +118,7 @@ public class PlayerMovement : MonoBehaviour
         marioBody.AddForce(Vector2.up * deathImpulse, ForceMode2D.Impulse);
     }
 
-    // void GameOverScene()
-    // {
-    //     Time.timeScale = 0.0f;
-    //     GameOver();
-    // }
-
-    // void GameOver()
-    // {
-
-    //     // draw gameover screen
-    //     gameOverUi.transform.localPosition = new Vector3(8.5f, 295.0f, 0.0f);
-    // }
-
+    // moves mario if mario has not exceeded max speed 
     void Move(int value)
     {
         Vector2 movement = new Vector2(value, 0);
@@ -187,6 +127,7 @@ public class PlayerMovement : MonoBehaviour
             marioBody.AddForce(movement * speed);
     }
 
+    // changes the value of moving & moves mario
     public void MoveCheck(int value)
     {
         if (value == 0)
@@ -195,12 +136,14 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
+            // moves mario
             FlipMarioSprite(value);
             moving = true;
             Move(value);
         }
     }
 
+    // what happens if ActionManager calls the jump
     public void Jump()
     {
         if (alive && onGroundState)
@@ -227,7 +170,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void GameRestart()
     {
-        // reset pos
+        // reset marios position 
         marioBody.transform.position = new Vector3(-3.04f, 0.0f, 0.0f);
         // reset sprite direction
         faceRightState = true;

@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Coin
   - Mario
+  - Manager
   layers:
   - Default
   - TransparentFX
