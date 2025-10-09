@@ -3,6 +3,8 @@ using UnityEngine;
 public class GoombaHeadTrigger : MonoBehaviour
 {
     private EnemyMovement goomba;
+
+    public PlayerMovement player;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -18,12 +20,15 @@ public class GoombaHeadTrigger : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("Hit goomba head");
-        if (other.CompareTag("Mario"))
+        // don't trigger this if dead
+        Debug.Log(player.alive);
+        if (other.CompareTag("Mario") && player.alive)
         {
             goomba.GoombaDie();
 
             // bounce player upwards
             Rigidbody2D rb = other.GetComponent<Rigidbody2D>();
+            // don't do this if mario is dead
             if (rb)
             {
                 rb.linearVelocityY = 0;

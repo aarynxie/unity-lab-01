@@ -42,7 +42,7 @@ public class HUDManager : MonoBehaviour
 
     public void SetScore(int score)
     {
-        Debug.Log($"setting score in HUD as: {score}");
+        //Debug.Log($"setting score in HUD as: {score}");
         scoreText.GetComponent<TextMeshProUGUI>().text = "Score: " + score.ToString();
     }
 

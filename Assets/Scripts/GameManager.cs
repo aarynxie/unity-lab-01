@@ -38,12 +38,12 @@ public class GameManager : MonoBehaviour
     {
         score += increment;
         SetScore(score);
-        Debug.Log(score);
+        //Debug.Log(score);
     }
 
     public void SetScore(int score)
     {
-        Debug.Log($"setting score as: {score}");
+        //Debug.Log($"setting score as: {score}");
         scoreChange.Invoke(score);
     }
 
