@@ -24,8 +24,8 @@ public class ActionManager : MonoBehaviour
     {
         if (context.performed)
         {
-            Debug.Log("JumpHold was performed");
-            Debug.Log(context.duration);
+            // Debug.Log("JumpHold was performed");
+            // Debug.Log(context.duration);
             jumpHold.Invoke();
         }
     }
@@ -40,7 +40,7 @@ public class ActionManager : MonoBehaviour
     {
         if (context.started)
         {
-            Debug.Log("Move started");
+            // Debug.Log("Move started");
             int faceRight = context.ReadValue<float>() > 0 ? 1 : -1;
             moveCheck.Invoke(faceRight);
         }
@@ -53,12 +53,12 @@ public class ActionManager : MonoBehaviour
 
     public void OnClickAction(InputAction.CallbackContext context)
     {
-        if (context.started)
-            Debug.Log("mouse click started");
-        else if (context.performed)
-            Debug.Log("mouse click performed");
-        else if (context.canceled)
-            Debug.Log("mosue click cancelled");
+        // if (context.started)
+        //     Debug.Log("mouse click started");
+        // else if (context.performed)
+        //     Debug.Log("mouse click performed");
+        // else if (context.canceled)
+        //     Debug.Log("mosue click cancelled");
     }
 
     public void OnPointerAction(InputAction.CallbackContext context)
@@ -66,7 +66,7 @@ public class ActionManager : MonoBehaviour
         if (context.performed)
         {
             Vector2 point = context.ReadValue<Vector2>();
-            Debug.Log($"Point detection: {point}");
+            // Debug.Log($"Point detection: {point}");
         }
     }
 }

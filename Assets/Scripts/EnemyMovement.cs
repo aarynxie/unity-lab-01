@@ -59,6 +59,8 @@ public class EnemyMovement : MonoBehaviour
 
     public void GameRestart()
     {
+        dead = false;
+        gameObject.SetActive(true);
         transform.localPosition = startPosition;
         originalX = transform.position.x;
         moveRight = -1;
@@ -75,7 +77,8 @@ public class EnemyMovement : MonoBehaviour
             // play death animation & sound here
 
             // destroy gameObject after 1 sec
-            Destroy(gameObject, 1f);
+            //Destroy(gameObject, 1f);
+            gameObject.SetActive(false);
         }
     }
 }

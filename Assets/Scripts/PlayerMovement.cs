@@ -89,7 +89,8 @@ public class PlayerMovement : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         // if mario collides with goomba, mario dies
-        if (other.gameObject.CompareTag("Enemy") && alive)
+        // don't trigger this if goomba is not alive
+        if (other.gameObject.CompareTag("Enemy") && alive && other.gameObject.activeSelf)
         {
             Debug.Log("collided with goomba!");
 
