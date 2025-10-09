@@ -16,6 +16,8 @@ public class EnemyMovement : MonoBehaviour
 
     public bool dead = false;
 
+    GameManager gameManager;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -24,6 +26,8 @@ public class EnemyMovement : MonoBehaviour
         // get the starting position
         originalX = transform.position.x;
         ComputeVelocity();
+
+        gameManager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
     }
 
     void ComputeVelocity()
@@ -75,6 +79,7 @@ public class EnemyMovement : MonoBehaviour
             dead = true;
 
             // play death animation & sound here
+            gameManager.IncreaseScore(1);
 
             // destroy gameObject after 1 sec
             //Destroy(gameObject, 1f);
