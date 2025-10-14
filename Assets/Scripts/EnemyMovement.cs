@@ -74,6 +74,8 @@ public class EnemyMovement : MonoBehaviour
         originalX = transform.position.x;
         moveRight = -1;
         ComputeVelocity();
+
+        GoombaAnimator.SetTrigger("gameRestart");
     }
 
     // call this method when head trigger is hit
@@ -87,13 +89,13 @@ public class EnemyMovement : MonoBehaviour
             // play death animation & sound here
             gameManager.IncreaseScore(1);
             // move rb down
-            Animator anim = GetComponent<Animator>();
-            float offset = -0.3F;
-            Debug.Log($"offset:{offset}");
-            Vector2 currentPos = enemyBody.position;
-            float newY = currentPos.y + velocity.y * Time.fixedDeltaTime + offset;
-            Vector2 targetPos = new Vector2(currentPos.x, newY);
-            enemyBody.MovePosition(targetPos);
+            // Animator anim = GetComponent<Animator>();
+            // float offset = -0.3F;
+            // Debug.Log($"offset:{offset}");
+            // Vector2 currentPos = enemyBody.position;
+            // float newY = currentPos.y + velocity.y * Time.fixedDeltaTime + offset;
+            // Vector2 targetPos = new Vector2(currentPos.x, newY);
+            // enemyBody.MovePosition(targetPos);
             GoombaAnimator.Play("goomba-die");
 
 
