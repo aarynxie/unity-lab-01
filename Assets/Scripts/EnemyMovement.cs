@@ -100,8 +100,8 @@ public class EnemyMovement : MonoBehaviour
 
 
             // destroy gameObject after 1 sec
-            //Destroy(gameObject, 1f);
-            StartCoroutine(waitOneSec());
+            Destroy(gameObject, 1f);
+            //StartCoroutine(waitOneSec());
 
 
         }

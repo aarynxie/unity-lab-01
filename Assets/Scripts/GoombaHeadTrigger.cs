@@ -4,8 +4,14 @@ public class GoombaHeadTrigger : MonoBehaviour
 {
     private EnemyMovement goomba;
 
-    public PlayerMovement player;
+    private PlayerMovement player;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    void Awake()
+    {
+        player = FindFirstObjectByType<PlayerMovement>();
+    }
+
     void Start()
     {
 

@@ -13,11 +13,18 @@ public class GameManager : MonoBehaviour
 
     private int score = 0;
 
+    // spawn goomba 
+    public GameObject goombaPrefab;
+    private GameObject currentGoomba;
+    private Vector3 goombaSpawnPos = new Vector3(1.56F, -2.4F, 0);
+    public Transform enemyParent;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         gameStart.Invoke();
         Time.timeScale = 1.0f;
+        SpawnEnemy(goombaPrefab, goombaSpawnPos);
     }
 
     // Update is called once per frame
@@ -32,6 +39,13 @@ public class GameManager : MonoBehaviour
         SetScore(score);
         gameRestart.Invoke();
         Time.timeScale = 1.0f;
+
+        if (currentGoomba != null)
+        {
+            Destroy(currentGoomba);
+        }
+        Debug.Log("game restart");
+        SpawnEnemy(goombaPrefab, goombaSpawnPos);
     }
 
     public void IncreaseScore(int increment)
@@ -51,5 +65,11 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 0.0f;
         gameOver.Invoke();
+    }
+
+    void SpawnEnemy(GameObject prefab, Vector3 position)
+    {
+        Debug.Log("spawning goomba");
+        currentGoomba = Instantiate(prefab, position, Quaternion.identity, enemyParent);
     }
 }
