@@ -28,7 +28,6 @@ public class CoinPopOut : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Mario"))
         {
-            //Debug.Log(blockAnimator.GetBool("GotCoin"));
             if (!blockAnimator.GetBool("GotCoin"))
             {
                 if (coinAnimator != null)
@@ -38,7 +37,7 @@ public class CoinPopOut : MonoBehaviour
             if (isBrick)
             {
                 blockAnimator.SetTrigger("Bounce");
-                Debug.Log("setting triggle to bounce");
+                //Debug.Log("CoinPopOut setting trigger to bounce");
             }
 
 
@@ -55,7 +54,6 @@ public class CoinPopOut : MonoBehaviour
         {
             // suspend execution for 5 seconds
             yield return new WaitForSeconds(0.5f);
-            Debug.Log("1 sec passed");
             blockBody.bodyType = RigidbodyType2D.Static;
         }
 

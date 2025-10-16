@@ -13,12 +13,19 @@ public class CameraController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        // make camera snap to marios position
+        //this.transform.position = new Vector3(player.position.x, this.transform.position.y, this.transform.position.z);
+
         // get coord of bottom left point of the viewport 
         Vector3 bottomLeft = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 0)); // z is the distance of the resulting plane from camera
         viewportHalfWidth = Mathf.Abs(bottomLeft.x - this.transform.position.x);
+
         offset = this.transform.position.x - player.position.x;
         startX = this.transform.position.x;
         endX = endLimit.transform.position.x - viewportHalfWidth;
+
+        // assign current scene's mario
+        player = GameObject.FindGameObjectWithTag("Mario").transform;
     }
 
     // Update is called once per frame

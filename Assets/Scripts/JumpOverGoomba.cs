@@ -23,32 +23,6 @@ public class JumpOverGoomba : MonoBehaviour
         gameManager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
     }
 
-    void FixedUpdate()
-    {
-        //mario jumps
-        // if (Input.GetKeyDown("space") && onGroundCheck())
-        // {
-
-        //     onGroundState = false;
-        //     countScoreState = true;
-        // }
-
-        // // when jumping, and Goomba is near Mario and we haven't registered score
-        // if (!onGroundState && countScoreState)
-        // {
-        //     if (Mathf.Abs(transform.position.x - enemyLocation.position.x) < 0.5f)
-        //     {
-        //         countScoreState = false;
-
-        //         gameManager.IncreaseScore(1);
-        //         // score++;
-        //         // scoreText.text = "Score: " + score.ToString();
-        //         // scoreTextGameOver.text = "Score: " + score.ToString();
-        //         //Debug.Log(score);
-        //     }
-        // }
-    }
-
     void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.CompareTag("Ground")) onGroundState = true;
@@ -58,12 +32,10 @@ public class JumpOverGoomba : MonoBehaviour
     {
         if (Physics2D.BoxCast(transform.position, boxSize, 0, -transform.up, maxDistance, layerMask))
         {
-            //Debug.Log("on ground");
             return true;
         }
         else
         {
-            //Debug.Log("not on ground");
             return false;
         }
     }

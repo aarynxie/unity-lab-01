@@ -4,8 +4,9 @@ using UnityEngine;
 using TMPro;
 using UnityEditor.Build.Content;
 using System.Xml.Schema;
+using UnityEngine.SceneManagement;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : Singleton<PlayerMovement>
 {
     public float speed = 10;
     private Rigidbody2D marioBody;
@@ -38,17 +39,34 @@ public class PlayerMovement : MonoBehaviour
 
     private bool jumpedState = false;
 
-    public GameManager gameManager;
+    private GameManager gameManager;
+
+    override public void Awake()
+    {
+        base.Awake();
+        GameManager.instance.gameRestart.AddListener(GameRestart);
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        gameManager = GameManager.instance;
+
         Application.targetFrameRate = 30;
         marioBody = GetComponent<Rigidbody2D>();
         marioSprite = GetComponent<SpriteRenderer>();
 
         marioAnimator.SetBool("onGround", onGroundState);
+
+        //SceneManager.activeSceneChanged += SetStartingPosition;
     }
+    // public void SetStartingPosition(Scene current, Scene next)
+    // {
+    //     if (next.name == "world2")
+    //     {
+    //         this.transform.position = new Vector3(-6.15f, -2.35f, 0f);
+    //     }
+    // }
 
     // Update is called once per frame
     void Update()
@@ -92,7 +110,7 @@ public class PlayerMovement : MonoBehaviour
         // don't trigger this if goomba is not alive
         if (other.gameObject.CompareTag("Enemy") && alive && other.gameObject.activeSelf)
         {
-            Debug.Log("collided with goomba!");
+            Debug.Log("PlayerMovement collided with goomba!");
 
             marioAnimator.Play("mario-die");
             marioDeathAudio.PlayOneShot(marioDeathAudio.clip);

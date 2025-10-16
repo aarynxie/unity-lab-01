@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
-public class ActionManager : MonoBehaviour
+public class ActionManager : Singleton<ActionManager>
 {
     public UnityEvent jump;
     public UnityEvent jumpHold;
@@ -24,8 +24,6 @@ public class ActionManager : MonoBehaviour
     {
         if (context.performed)
         {
-            // Debug.Log("JumpHold was performed");
-            // Debug.Log(context.duration);
             jumpHold.Invoke();
         }
     }
@@ -40,7 +38,6 @@ public class ActionManager : MonoBehaviour
     {
         if (context.started)
         {
-            // Debug.Log("Move started");
             int faceRight = context.ReadValue<float>() > 0 ? 1 : -1;
             moveCheck.Invoke(faceRight);
         }

@@ -1,10 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
     public UnityEvent gameStart;
     public UnityEvent gameRestart;
@@ -20,10 +23,17 @@ public class GameManager : MonoBehaviour
     public Transform enemyParent;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public override void Awake()
+    {
+        base.Awake();
+        DontDestroyOnLoad(this.gameObject);
+    }
+
     void Start()
     {
         gameStart.Invoke();
         Time.timeScale = 1.0f;
+
         SpawnEnemy(goombaPrefab, goombaSpawnPos);
     }
 
@@ -44,7 +54,7 @@ public class GameManager : MonoBehaviour
         {
             Destroy(currentGoomba);
         }
-        Debug.Log("game restart");
+        Debug.Log("GameManager game restart");
         SpawnEnemy(goombaPrefab, goombaSpawnPos);
     }
 
@@ -52,12 +62,10 @@ public class GameManager : MonoBehaviour
     {
         score += increment;
         SetScore(score);
-        //Debug.Log(score);
     }
 
     public void SetScore(int score)
     {
-        //Debug.Log($"setting score as: {score}");
         scoreChange.Invoke(score);
     }
 
@@ -69,7 +77,7 @@ public class GameManager : MonoBehaviour
 
     void SpawnEnemy(GameObject prefab, Vector3 position)
     {
-        Debug.Log("spawning goomba");
+        Debug.Log("GameManager spawning goomba");
         currentGoomba = Instantiate(prefab, position, Quaternion.identity, enemyParent);
     }
 }

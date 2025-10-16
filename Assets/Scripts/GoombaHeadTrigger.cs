@@ -25,9 +25,7 @@ public class GoombaHeadTrigger : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Hit goomba head");
         // don't trigger this if dead
-        Debug.Log(player.alive);
         if (other.CompareTag("Mario") && player.alive)
         {
             goomba.GoombaDie();

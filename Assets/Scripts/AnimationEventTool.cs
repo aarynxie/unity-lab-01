@@ -9,7 +9,7 @@ public class AnimationEventTool : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        GameManager.instance.gameOver.AddListener(TriggerAnimationEvent);
     }
 
     // Update is called once per frame
