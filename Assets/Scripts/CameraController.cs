@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public Transform player; // mario's transform
+    private Transform player; // mario's transform
     public Transform endLimit; // gameobject that indicates end of map
     private float offset; // initial x offset between camera and Mario
     private float startX; // smallest x coord of the camera
@@ -13,6 +13,8 @@ public class CameraController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        // assign current scene's mario
+        player = GameObject.FindGameObjectWithTag("Mario").transform;
         // make camera snap to marios position
         //this.transform.position = new Vector3(player.position.x, this.transform.position.y, this.transform.position.z);
 
@@ -24,8 +26,8 @@ public class CameraController : MonoBehaviour
         startX = this.transform.position.x;
         endX = endLimit.transform.position.x - viewportHalfWidth;
 
-        // assign current scene's mario
-        player = GameObject.FindGameObjectWithTag("Mario").transform;
+
+        Debug.Log($"Camera Controller {player}");
     }
 
     // Update is called once per frame

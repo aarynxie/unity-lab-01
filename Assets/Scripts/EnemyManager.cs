@@ -4,6 +4,10 @@ using System.Collections.Generic;
 
 public class EnemyManager : Singleton<EnemyManager>
 {
+    public GameObject goombaPrefab;
+    private GameObject currentGoomba;
+    private Vector3 goombaSpawnPos = new Vector3(1.56F, -2.4F, 0);
+    private Transform enemyParent;
     public override void Awake()
     {
         base.Awake();
@@ -12,6 +16,9 @@ public class EnemyManager : Singleton<EnemyManager>
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        enemyParent = GameObject.Find("Enemies").transform;
+        //goombaPrefab = GameObject.Find("Goomba");
+        SpawnEnemy(goombaPrefab, goombaSpawnPos);
 
     }
 
@@ -23,9 +30,22 @@ public class EnemyManager : Singleton<EnemyManager>
 
     public void GameRestart()
     {
+        if (currentGoomba != null)
+        {
+            Destroy(currentGoomba);
+        }
+        SpawnEnemy(goombaPrefab, goombaSpawnPos);
+
         foreach (Transform child in transform)
         {
             child.GetComponent<EnemyMovement>().GameRestart();
         }
+    }
+
+    void SpawnEnemy(GameObject prefab, Vector3 position)
+    {
+        Debug.Log("GameManager spawning goomba");
+        currentGoomba = Instantiate(prefab, position, Quaternion.identity, enemyParent);
+        currentGoomba.SetActive(true);
     }
 }

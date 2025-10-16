@@ -20,7 +20,6 @@ public class PlayerMovement : Singleton<PlayerMovement>
     private bool faceRightState = true;
 
     //reset game variables
-    public GameObject enemies;
 
     public Animator marioAnimator;
 

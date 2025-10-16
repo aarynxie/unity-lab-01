@@ -17,15 +17,17 @@ public class EnemyMovement : MonoBehaviour
 
     public bool dead = false;
 
-    public AudioSource goombaSound;
+    private AudioSource goombaSound;
 
     GameManager gameManager;
 
-    public Animator GoombaAnimator;
+    private Animator GoombaAnimator;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        goombaSound = GetComponent<AudioSource>();
+        GoombaAnimator = GetComponent<Animator>();
         enemyBody = GetComponent<Rigidbody2D>();
 
         // get the starting position
