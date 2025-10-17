@@ -1354,6 +1354,7 @@ MonoBehaviour:
   gameOver:
     m_PersistentCalls:
       m_Calls: []
+  gameScore: {fileID: 11400000, guid: 69ab4aa11737048a19e5ca387cd7d5dd, type: 2}
 --- !u!224 &1060484194
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2840,13 +2841,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3fad59718e29418bbb19e231faa80f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  speed: 150
-  maxSpeed: 5
-  upSpeed: 30
+  gameConstants: {fileID: 11400000, guid: 8ba853dfc128643d9bcec4acd655a1e6, type: 2}
   marioAnimator: {fileID: 1899555862}
   marioAudio: {fileID: 1899555861}
   marioDeathAudio: {fileID: 1141701888}
-  deathImpulse: 15
   gameCamera: {fileID: 147240462}
 --- !u!50 &1899555866
 Rigidbody2D:

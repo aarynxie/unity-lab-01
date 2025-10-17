@@ -15,7 +15,9 @@ public class GameManager : Singleton<GameManager>
     public UnityEvent<int> scoreChange;
     public UnityEvent gameOver;
 
-    private int score = 0;
+    //private int score = 0;
+
+    public IntVariable gameScore;
 
     // spawn goomba 
 
@@ -44,16 +46,16 @@ public class GameManager : Singleton<GameManager>
 
     public void GameRestart()
     {
-        score = 0;
-        SetScore(score);
+        gameScore.Value = 0;
+        SetScore(gameScore.Value);
         gameRestart.Invoke();
         Time.timeScale = 1.0f;
     }
 
     public void IncreaseScore(int increment)
     {
-        score += increment;
-        SetScore(score);
+        gameScore.ApplyChange(increment);
+        SetScore(gameScore.Value);
     }
 
     public void SetScore(int score)
@@ -70,6 +72,6 @@ public class GameManager : Singleton<GameManager>
     public void SceneSetup(Scene current, Scene next)
     {
         gameStart.Invoke();
-        SetScore(score);
+        SetScore(gameScore.Value);
     }
 }

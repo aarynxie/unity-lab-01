@@ -8,12 +8,14 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMovement : Singleton<PlayerMovement>
 {
-    public float speed = 10;
+    public GameConstants gameConstants;
+
+    float deathImpulse;
+    float speed;
+    float maxSpeed;
+    float upSpeed;
+
     private Rigidbody2D marioBody;
-
-    public float maxSpeed = 20;
-
-    public float upSpeed = 10;
     private bool onGroundState = true;
 
     private SpriteRenderer marioSprite;
@@ -25,7 +27,7 @@ public class PlayerMovement : Singleton<PlayerMovement>
 
     public AudioSource marioAudio;
     public AudioSource marioDeathAudio;
-    public float deathImpulse = 15;
+
 
     [System.NonSerialized]
     public bool alive = true;
@@ -50,6 +52,11 @@ public class PlayerMovement : Singleton<PlayerMovement>
     void Start()
     {
         gameManager = GameManager.instance;
+
+        speed = gameConstants.speed;
+        maxSpeed = gameConstants.maxSpeed;
+        deathImpulse = gameConstants.deathImpulse;
+        upSpeed = gameConstants.upSpeed;
 
         Application.targetFrameRate = 30;
         marioBody = GetComponent<Rigidbody2D>();

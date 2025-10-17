@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class HUDManager : Singleton<HUDManager>
 {
+    // public GameObject highestscoreText;
+    // public IntVariable gameScore;
     // index 0 is gameplay pos, 1 is game over menu pos
     private Vector3[] scoreTextPosition =
     {
@@ -59,5 +61,10 @@ public class HUDManager : Singleton<HUDManager>
         gameOverPanel.SetActive(true);
         scoreText.transform.localPosition = scoreTextPosition[1];
         restartButton.transform.localPosition = restartButtonPosition[1];
+
+        // set highscore
+        // highestscoreText.GetComponent<TextMeshProUGUI>().text = "TOP- " + gameScore.previousHighestValue.ToString("D6");
+        // // show
+        // highestscoreText.SetActive(true);
     }
 }
