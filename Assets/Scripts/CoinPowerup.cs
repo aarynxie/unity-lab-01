@@ -8,6 +8,7 @@ public class CoinPowerup : BasePowerup
     {
         base.Start();
         this.type = PowerupType.Coin; // set to coin enum type
+        GameManager.instance.gameRestart.AddListener(GameRestart);
     }
 
     // Update is called once per frame
@@ -18,7 +19,6 @@ public class CoinPowerup : BasePowerup
 
     public override void SpawnPowerup()
     {
-        Debug.Log("coin spawned");
         spawned = true;
         // play the sound
         AudioSource source = this.GetComponent<AudioSource>();
@@ -35,14 +35,18 @@ public class CoinPowerup : BasePowerup
 
     public override void ApplyPowerup(MonoBehaviour i)
     {
-        Debug.Log("CoinPowerup running AppyPowerup");
         GameManager manager;
         bool result = i.TryGetComponent<GameManager>(out manager);
 
         if (result)
         {
             manager.IncreaseScore(1);
-            Debug.Log("CoinPowerup increasing score");
         }
+    }
+
+    public override void GameRestart()
+    {
+        base.GameRestart();
+        this.GetComponent<Animator>().Play("default");
     }
 }

@@ -12,7 +12,7 @@ public class BrickPowerupController : MonoBehaviour, IPowerupController
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        GameManager.instance.gameRestart.AddListener(GameRestart);
     }
 
     // Update is called once per frame
@@ -57,5 +57,12 @@ public class BrickPowerupController : MonoBehaviour, IPowerupController
     public void Disable()
     {
 
+    }
+
+    public void GameRestart()
+    {
+        Debug.Log("BrickPowerupCOntroller restarting");
+        // reset all
+        this.GetComponent<Animator>().SetTrigger("reset");
     }
 }

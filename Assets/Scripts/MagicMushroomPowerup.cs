@@ -5,6 +5,8 @@ using Unity.VisualScripting;
 
 public class MagicMushroomPowerup : BasePowerup
 {
+    public Animator mushroomAnimator;
+    private Vector3 startingPos = new Vector3(0f, 0.999f, 0f);
     // set up this object's type
 
     //instantiate variables
@@ -12,6 +14,8 @@ public class MagicMushroomPowerup : BasePowerup
     {
         base.Start();
         this.type = PowerupType.MagicMushroom;
+        GameManager.instance.gameRestart.AddListener(GameRestart);
+        mushroomAnimator = GetComponentInChildren<Animator>();
     }
 
     // interface implementation
@@ -37,5 +41,16 @@ public class MagicMushroomPowerup : BasePowerup
     {
         Debug.Log("MagicMushroomPowerup running AppyPowerup");
         // do something with the object
+    }
+
+    public override void GameRestart()
+    {
+        base.GameRestart();
+        // reset position of rigid body
+        rigidBody.bodyType = RigidbodyType2D.Static;
+        gameObject.GetComponent<Collider2D>().enabled = false;
+        gameObject.transform.localPosition = startingPos;
+        mushroomAnimator.Play("Mushroom-idle");
+        //gameObject.GetComponent<Anim
     }
 }

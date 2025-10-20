@@ -72,21 +72,21 @@ public class EnemyMovement : MonoBehaviour
         originalX = transform.position.x;
         moveRight = -1;
         ComputeVelocity();
-
-        GoombaAnimator.SetTrigger("gameRestart");
+        GoombaAnimator = GetComponent<Animator>();
+        GoombaAnimator.Play("goomba-idle");
     }
 
     // call this method when head trigger is hit
     public void GoombaDie()
     {
+        Debug.Log("EnemyMovement called goombadie");
         if (!dead)
         {
+            Debug.Log("EnemyMovement called goombadie and goomba is not dead");
             dead = true;
-
-
             // play death animation & sound here
             gameManager.IncreaseScore(1);
-
+            Debug.Log(GoombaAnimator);
             GoombaAnimator.Play("goomba-die");
 
             // destroy gameObject after 1 sec

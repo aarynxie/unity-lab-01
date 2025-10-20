@@ -10,6 +10,8 @@ public class PuaseButtonController : MonoBehaviour, IInteractiveButton
     public Sprite playIcon;
     private Image image;
 
+    public AudioSource bgm;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -29,10 +31,12 @@ public class PuaseButtonController : MonoBehaviour, IInteractiveButton
         if (isPaused)
         {
             image.sprite = playIcon;
+            if (bgm.isPlaying) bgm.Pause();
         }
         else
         {
             image.sprite = pauseIcon;
+            if (!bgm.isPlaying) bgm.UnPause();
         }
     }
 }

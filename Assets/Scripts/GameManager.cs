@@ -47,6 +47,7 @@ public class GameManager : Singleton<GameManager>
 
     public void GameRestart()
     {
+        Debug.Log("GameManager Invoking gameRestart event");
         gameScore.Value = 0;
         SetScore(gameScore.Value);
         gameRestart.Invoke();

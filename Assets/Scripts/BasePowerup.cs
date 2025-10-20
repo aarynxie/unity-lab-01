@@ -9,10 +9,12 @@ public abstract class BasePowerup : MonoBehaviour, IPowerup
     protected bool goRight = true;
     protected Rigidbody2D rigidBody;
 
+
     // base methods
     protected virtual void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
+        GameManager.instance.gameRestart.AddListener(GameRestart);
     }
 
     // interface methods
@@ -35,7 +37,8 @@ public abstract class BasePowerup : MonoBehaviour, IPowerup
 
     public void DestroyPowerup()
     {
-        Destroy(this.gameObject);
+        //Destroy(this.gameObject);
+        this.gameObject.SetActive(false);
     }
 
     protected virtual void OnCollisionEnter2D(Collision2D col)
@@ -57,6 +60,14 @@ public abstract class BasePowerup : MonoBehaviour, IPowerup
                 rigidBody.AddForce(Vector2.right * 3 * (goRight ? 1 : -1), ForceMode2D.Impulse);
             }
         }
+    }
+
+    public virtual void GameRestart()
+    {
+        Debug.Log("BasePowerup restarting");
+        spawned = false;
+        goRight = true;
+        this.gameObject.SetActive(true);
     }
 
     // 2. abstract methods, to be implemented by derived classes

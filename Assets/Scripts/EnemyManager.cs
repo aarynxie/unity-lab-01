@@ -44,7 +44,6 @@ public class EnemyManager : Singleton<EnemyManager>
 
     void SpawnEnemy(GameObject prefab, Vector3 position)
     {
-        Debug.Log("GameManager spawning goomba");
         currentGoomba = Instantiate(prefab, position, Quaternion.identity, enemyParent);
         currentGoomba.SetActive(true);
     }

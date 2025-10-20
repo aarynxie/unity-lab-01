@@ -25,9 +25,6 @@ public class CameraController : MonoBehaviour
         offset = this.transform.position.x - player.position.x;
         startX = this.transform.position.x;
         endX = endLimit.transform.position.x - viewportHalfWidth;
-
-
-        Debug.Log($"Camera Controller {player}");
     }
 
     // Update is called once per frame
