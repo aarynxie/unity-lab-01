@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 
 public class MagicMushroomPowerup : BasePowerup
 {
@@ -17,6 +18,17 @@ public class MagicMushroomPowerup : BasePowerup
     public override void SpawnPowerup()
     {
         spawned = true;
+        //rigidBody.typ
+        rigidBody.bodyType = RigidbodyType2D.Dynamic;
+        gameObject.GetComponent<Collider2D>().enabled = true;
+
+        StartCoroutine(WaitNextFrame());
+    }
+
+    IEnumerator WaitNextFrame()
+    {
+        // suspend execution for 5 seconds
+        yield return new WaitForEndOfFrame();
         rigidBody.AddForce(Vector2.right * 3, ForceMode2D.Impulse);
     }
 
