@@ -13,26 +13,6 @@ public class MagicMushroomPowerup : BasePowerup
         this.type = PowerupType.MagicMushroom;
     }
 
-    void OnCollisionEnter2D(Collision2D col)
-    {
-        if (col.gameObject.CompareTag("Mario") && spawned)
-        {
-            // do something when colliding with player
-
-            // then destroy powerup
-            DestroyPowerup();
-        }
-        else if (col.gameObject.layer == 10) // else if hitting pipe, flip travel direction
-        {
-            // remember to set pipe to layer 10
-            if (spawned)
-            {
-                goRight = !goRight;
-                rigidBody.AddForce(Vector2.right * 3 * (goRight ? 1 : -1), ForceMode2D.Impulse);
-            }
-        }
-    }
-
     // interface implementation
     public override void SpawnPowerup()
     {
@@ -43,6 +23,7 @@ public class MagicMushroomPowerup : BasePowerup
     // interface implementation
     public override void ApplyPowerup(MonoBehaviour i)
     {
+        Debug.Log("MagicMushroomPowerup running AppyPowerup");
         // do something with the object
     }
 }
