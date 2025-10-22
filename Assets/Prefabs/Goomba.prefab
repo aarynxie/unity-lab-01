@@ -11,10 +11,11 @@ GameObject:
   - component: {fileID: 7107096012303471183}
   - component: {fileID: 3281845385262789039}
   - component: {fileID: 8247929114887969468}
-  - component: {fileID: 5850386408891520976}
   - component: {fileID: 641964382946285646}
   - component: {fileID: 2002359799698006256}
   - component: {fileID: 4980662390122188399}
+  - component: {fileID: 4314721647484297429}
+  - component: {fileID: 3052731204961906052}
   m_Layer: 7
   m_Name: Goomba
   m_TagString: Enemy
@@ -123,22 +124,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &5850386408891520976
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1871023208127458814}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d21ebce50f2f4892bd13315b373caef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
-  startPosition: {x: 0, y: 0, z: 0}
-  dead: 0
-  goombaSound: {fileID: 4980662390122188399}
-  GoombaAnimator: {fileID: 641964382946285646}
 --- !u!95 &641964382946285646
 Animator:
   serializedVersion: 7
@@ -310,6 +295,63 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4314721647484297429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1871023208127458814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d21ebce50f2f4892bd13315b373caef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
+  startPosition: {x: 0, y: 0, z: 0}
+  dead: 0
+  increaseScore:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 3de586836c1b54e0e8a754917a941a23, type: 2}
+        m_TargetAssemblyTypeName: IntGameEvent, Assembly-CSharp
+        m_MethodName: Raise
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &3052731204961906052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1871023208127458814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d5ad8eba85484608b48f80669ac1dfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SImpleGameEventListener
+  Event: {fileID: 11400000, guid: ab302da0d46554b34882ab72716e09ee, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4314721647484297429}
+        m_TargetAssemblyTypeName: EnemyMovement, Assembly-CSharp
+        m_MethodName: GameRestart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2630477745167082994
 GameObject:
   m_ObjectHideFlags: 0
@@ -320,7 +362,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4557191006605701024}
   - component: {fileID: 6871014543166562255}
-  - component: {fileID: 5933404349787816452}
+  - component: {fileID: 3812905682909818402}
   m_Layer: 7
   m_Name: HeadCollider
   m_TagString: Untagged
@@ -386,7 +428,7 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
---- !u!114 &5933404349787816452
+--- !u!114 &3812905682909818402
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -398,4 +440,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0597eab73f0c4c9d997ad3de995f8ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GoombaHeadTrigger
-  player: {fileID: 0}

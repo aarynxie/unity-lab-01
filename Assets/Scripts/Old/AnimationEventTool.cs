@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class AnimationEventTool : MonoBehaviour
 {
     //public UnityEvent useEvent;
+    public UnityEvent gameOver;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -19,6 +20,8 @@ public class AnimationEventTool : MonoBehaviour
 
     public void TriggerAnimationEvent()
     {
-        GameManager.instance.gameOver.Invoke();
+        Debug.Log("AnimationEventTool triggering gameover");
+        //GameManager.instance.gameOver.Invoke();
+        gameOver.Invoke();
     }
 }

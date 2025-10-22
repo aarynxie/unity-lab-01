@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class EnemyMovement : MonoBehaviour
@@ -19,9 +20,10 @@ public class EnemyMovement : MonoBehaviour
 
     private AudioSource goombaSound;
 
-    GameManager gameManager;
 
     private Animator GoombaAnimator;
+
+    public UnityEvent<int> increaseScore;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -33,8 +35,6 @@ public class EnemyMovement : MonoBehaviour
         // get the starting position
         originalX = transform.position.x;
         ComputeVelocity();
-
-        gameManager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
     }
 
     void ComputeVelocity()
@@ -85,7 +85,9 @@ public class EnemyMovement : MonoBehaviour
             Debug.Log("EnemyMovement called goombadie and goomba is not dead");
             dead = true;
             // play death animation & sound here
-            gameManager.IncreaseScore(1);
+            //gameManager.IncreaseScore(1);
+            increaseScore.Invoke(1);
+
             Debug.Log(GoombaAnimator);
             GoombaAnimator.Play("goomba-die");
 

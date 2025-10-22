@@ -11,7 +11,7 @@ public class EnemyManager : Singleton<EnemyManager>
     public override void Awake()
     {
         base.Awake();
-        GameManager.instance.gameRestart.AddListener(GameRestart);
+        // TO DO FIX GameManager.instance.gameRestart.AddListener(GameRestart);
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

@@ -7,11 +7,6 @@ public class QuestionBoxPowerupController : MonoBehaviour, IPowerupController
     public Animator powerupAnimator;
     public BasePowerup powerup;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        GameManager.instance.gameRestart.AddListener(GameRestart);
-    }
 
     // Update is called once per frame
     void Update()
@@ -25,6 +20,7 @@ public class QuestionBoxPowerupController : MonoBehaviour, IPowerupController
         {
             this.GetComponent<Animator>().SetTrigger("spawned");
             powerupAnimator.SetTrigger("spawned");
+            Debug.Log("setting trigger");
         }
     }
 
@@ -36,6 +32,8 @@ public class QuestionBoxPowerupController : MonoBehaviour, IPowerupController
 
     public void GameRestart()
     {
+        powerupAnimator.ResetTrigger("spawned");
         this.GetComponent<Animator>().Play("idle");
+
     }
 }

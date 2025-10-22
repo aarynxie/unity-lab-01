@@ -128,7 +128,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 10786558}
-  - component: {fileID: 10786557}
   m_Layer: 7
   m_Name: Enemies
   m_TagString: Untagged
@@ -136,19 +135,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &10786557
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 10786556}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68dc08799cf384709b779a305b80e455, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyManager
-  goombaPrefab: {fileID: 1871023208127458814, guid: 0ddfc7ed5f9164e70823555632534694, type: 3}
 --- !u!4 &10786558
 Transform:
   m_ObjectHideFlags: 0
@@ -356,7 +342,6 @@ GameObject:
   - component: {fileID: 147240461}
   - component: {fileID: 147240460}
   - component: {fileID: 147240464}
-  - component: {fileID: 147240463}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -438,19 +423,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &147240463
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 147240459}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8af59065aa67c44e487d342535b4df43, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CameraController
-  endLimit: {fileID: 1840766639}
 --- !u!114 &147240464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -730,7 +702,6 @@ GameObject:
   - component: {fileID: 659100018}
   - component: {fileID: 659100017}
   - component: {fileID: 659100016}
-  - component: {fileID: 659100015}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -738,21 +709,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &659100015
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 659100014}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5119bc691d06496ebd8952b4569d04e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HUDManager
-  scoreText: {fileID: 1522960805}
-  restartButton: {fileID: 974501568}
-  gameOverPanel: {fileID: 749310803}
 --- !u!114 &659100016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1011,7 +967,6 @@ GameObject:
   - component: {fileID: 974501572}
   - component: {fileID: 974501571}
   - component: {fileID: 974501570}
-  - component: {fileID: 974501569}
   m_Layer: 5
   m_Name: RestartButton
   m_TagString: Untagged
@@ -1038,18 +993,6 @@ RectTransform:
   m_AnchoredPosition: {x: 332, y: 174}
   m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &974501569
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 974501567}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04a1540424ae64a96a0a364f9fbd6830, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ButtonController
 --- !u!114 &974501570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1094,7 +1037,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 974501569}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ButtonController, Assembly-CSharp
         m_MethodName: ButtonClick
         m_Mode: 1
@@ -1322,7 +1265,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1060484194}
-  - component: {fileID: 1060484193}
   m_Layer: 5
   m_Name: GameManager
   m_TagString: Manager
@@ -1330,31 +1272,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1060484193
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1060484192}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 872bdd642f49a487ca465fa1b9701f58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  gameStart:
-    m_PersistentCalls:
-      m_Calls: []
-  gameRestart:
-    m_PersistentCalls:
-      m_Calls: []
-  scoreChange:
-    m_PersistentCalls:
-      m_Calls: []
-  gameOver:
-    m_PersistentCalls:
-      m_Calls: []
-  gameScore: {fileID: 11400000, guid: 69ab4aa11737048a19e5ca387cd7d5dd, type: 2}
 --- !u!224 &1060484194
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2452,14 +2369,11 @@ GameObject:
   - component: {fileID: 1899555868}
   - component: {fileID: 1899555867}
   - component: {fileID: 1899555866}
-  - component: {fileID: 1899555865}
   - component: {fileID: 1899555864}
-  - component: {fileID: 1899555863}
   - component: {fileID: 1899555862}
   - component: {fileID: 1899555861}
   - component: {fileID: 1899555860}
   - component: {fileID: 1899555859}
-  - component: {fileID: 1899555858}
   m_Layer: 0
   m_Name: Mario
   m_TagString: Mario
@@ -2467,18 +2381,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1899555858
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1899555857}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbee8007d61b14000a9eb77c77047074, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AnimationEventTool
 --- !u!114 &1899555859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2494,7 +2396,7 @@ MonoBehaviour:
   jump:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1899555865}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
         m_MethodName: Jump
         m_Mode: 1
@@ -2509,7 +2411,7 @@ MonoBehaviour:
   jumpHold:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1899555865}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
         m_MethodName: JumpHold
         m_Mode: 1
@@ -2524,7 +2426,7 @@ MonoBehaviour:
   moveCheck:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1899555865}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
         m_MethodName: MoveCheck
         m_Mode: 0
@@ -2765,24 +2667,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1899555863
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1899555857}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14cb7bd99d9fa440d8c3295df341d546, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::JumpOverGoomba
-  enemyLocation: {fileID: 0}
-  boxSize: {x: 0.5, y: 1, z: 0}
-  maxDistance: 0.5
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 8
 --- !u!61 &1899555864
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2829,23 +2713,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.84936756, y: 1.0279326}
   m_EdgeRadius: 0
---- !u!114 &1899555865
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1899555857}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3fad59718e29418bbb19e231faa80f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  gameConstants: {fileID: 11400000, guid: 8ba853dfc128643d9bcec4acd655a1e6, type: 2}
-  marioAnimator: {fileID: 1899555862}
-  marioAudio: {fileID: 1899555861}
-  marioDeathAudio: {fileID: 1141701888}
-  gameCamera: {fileID: 147240462}
 --- !u!50 &1899555866
 Rigidbody2D:
   serializedVersion: 5

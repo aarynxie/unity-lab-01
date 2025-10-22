@@ -204,7 +204,7 @@ GameObject:
   - component: {fileID: 557536986518514675}
   - component: {fileID: 5174966440040668691}
   - component: {fileID: 233957064992874766}
-  - component: {fileID: 1572345364847419327}
+  - component: {fileID: 552088647269763237}
   m_Layer: 0
   m_Name: Mushroom
   m_TagString: Untagged
@@ -307,7 +307,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1572345364847419327
+--- !u!114 &552088647269763237
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -322,7 +322,7 @@ MonoBehaviour:
   useEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7427609477384183753}
+      - m_Target: {fileID: 3954932778701449124}
         m_TargetAssemblyTypeName: MagicMushroomPowerup, Assembly-CSharp
         m_MethodName: SpawnPowerup
         m_Mode: 1
@@ -350,7 +350,8 @@ GameObject:
   - component: {fileID: 7372027958135118138}
   - component: {fileID: 376742681955778925}
   - component: {fileID: 8199453170452823586}
-  - component: {fileID: 3315087710348874147}
+  - component: {fileID: 869135628481037100}
+  - component: {fileID: 600286153347216855}
   m_Layer: 8
   m_Name: Question-Box-1
   m_TagString: Coin
@@ -687,7 +688,35 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &3315087710348874147
+--- !u!114 &869135628481037100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4436204518007457602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d5ad8eba85484608b48f80669ac1dfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SimpleGameEventListener
+  Event: {fileID: 11400000, guid: f5391832d9d24401cb7748f69247611c, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 600286153347216855}
+        m_TargetAssemblyTypeName: QuestionBoxPowerupController, Assembly-CSharp
+        m_MethodName: GameRestart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &600286153347216855
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -700,7 +729,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::QuestionBoxPowerupController
   powerupAnimator: {fileID: 233957064992874766}
-  powerup: {fileID: 7427609477384183753}
+  powerup: {fileID: 3954932778701449124}
 --- !u!1 &5249918463926832305
 GameObject:
   m_ObjectHideFlags: 0
@@ -712,7 +741,8 @@ GameObject:
   - component: {fileID: 5181444087151787914}
   - component: {fileID: 289123296554770709}
   - component: {fileID: 5374945073320159475}
-  - component: {fileID: 7427609477384183753}
+  - component: {fileID: 3954932778701449124}
+  - component: {fileID: 6849603619792884075}
   m_Layer: 8
   m_Name: Powerup
   m_TagString: Untagged
@@ -809,7 +839,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &7427609477384183753
+--- !u!114 &3954932778701449124
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -823,3 +853,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MagicMushroomPowerup
   type: 1
   spawned: 0
+  onPowerupCollected: {fileID: 11400000, guid: 0b4fd36bfb58c412dbdd467eaf409865, type: 2}
+  mushroomAnimator: {fileID: 233957064992874766}
+  mushroomChild: {fileID: 4009286752369877732}
+--- !u!114 &6849603619792884075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5249918463926832305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d5ad8eba85484608b48f80669ac1dfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SimpleGameEventListener
+  Event: {fileID: 11400000, guid: f5391832d9d24401cb7748f69247611c, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3954932778701449124}
+        m_TargetAssemblyTypeName: MagicMushroomPowerup, Assembly-CSharp
+        m_MethodName: GameRestart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

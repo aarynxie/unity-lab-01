@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 1691376120533241858}
   - component: {fileID: 4776886544092026846}
   - component: {fileID: 7536348839463044615}
-  - component: {fileID: 146559529871135909}
   m_Layer: 0
   m_Name: Coin (1)
   m_TagString: Untagged
@@ -124,7 +123,7 @@ AudioSource:
   m_GameObject: {fileID: 350256565630574476}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -7780920250900443867, guid: 3b36a4e04181b4d65ad388ecd1f8ae5b, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: d885ffc842af744d89f7d595ffcc176a, type: 3}
   m_PlayOnAwake: 0
@@ -212,19 +211,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &146559529871135909
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 350256565630574476}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6165bf1b02f6d4164a0924509a16ba56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CoinSound
-  coinAudio: {fileID: 7536348839463044615}
 --- !u!1 &2633947113648667487
 GameObject:
   m_ObjectHideFlags: 0
@@ -238,7 +224,6 @@ GameObject:
   - component: {fileID: 324270704789062766}
   - component: {fileID: 5954845961458258770}
   - component: {fileID: 1455974228885862852}
-  - component: {fileID: 1644987359023940546}
   - component: {fileID: 3126142618858161623}
   - component: {fileID: 3312938166714237595}
   m_Layer: 8
@@ -434,22 +419,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1644987359023940546
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2633947113648667487}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f079d4e185139498f85f363b69f3c581, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CoinPopOut
-  blockAnimator: {fileID: 1455974228885862852}
-  coinAnimator: {fileID: 4776886544092026846}
-  blockBody: {fileID: 3126142618858161623}
-  isBrick: 1
 --- !u!50 &3126142618858161623
 Rigidbody2D:
   serializedVersion: 5

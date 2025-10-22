@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 
 public abstract class BasePowerup : MonoBehaviour, IPowerup
@@ -9,12 +10,14 @@ public abstract class BasePowerup : MonoBehaviour, IPowerup
     protected bool goRight = true;
     protected Rigidbody2D rigidBody;
 
+    [Header("SO Event References")]
+    public GameEvent<IPowerup> onPowerupCollected;
 
     // base methods
     protected virtual void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
-        GameManager.instance.gameRestart.AddListener(GameRestart);
+        //GameManager.instance.gameRestart.AddListener(GameRestart);
     }
 
     // interface methods
@@ -38,15 +41,17 @@ public abstract class BasePowerup : MonoBehaviour, IPowerup
     public void DestroyPowerup()
     {
         //Destroy(this.gameObject);
-        this.gameObject.SetActive(false);
+        //this.gameObject.SetActive(false);
+        this.gameObject.GetComponentInChildren<SpriteRenderer>().enabled = false;
     }
 
     protected virtual void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.CompareTag("Mario") && spawned)
         {
-            // evoke ApplyPowerup
-            PowerupManager.instance.powerupCollected.Invoke(this);
+            Debug.Log("BasePowerup Mario collided with a basepowerup and raising onPowerupCollected");
+            onPowerupCollected.Raise(this);
+
 
             // then destroy powerup
             DestroyPowerup();
@@ -64,10 +69,10 @@ public abstract class BasePowerup : MonoBehaviour, IPowerup
 
     public virtual void GameRestart()
     {
-        Debug.Log("BasePowerup restarting");
         spawned = false;
         goRight = true;
-        this.gameObject.SetActive(true);
+        //this.gameObject.SetActive(true);
+        this.gameObject.GetComponentInChildren<SpriteRenderer>().enabled = true;
     }
 
     // 2. abstract methods, to be implemented by derived classes

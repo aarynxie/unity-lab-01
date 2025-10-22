@@ -3,12 +3,12 @@ using UnityEngine.Events;
 
 public class CoinPowerup : BasePowerup
 {
+    public UnityEvent<IPowerup> powerupCollected;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected override void Start()
     {
         base.Start();
         this.type = PowerupType.Coin; // set to coin enum type
-        GameManager.instance.gameRestart.AddListener(GameRestart);
     }
 
     // Update is called once per frame
@@ -21,10 +21,11 @@ public class CoinPowerup : BasePowerup
     {
         spawned = true;
         // play the sound
-        AudioSource source = this.GetComponent<AudioSource>();
+        AudioSource source = this.GetComponentInChildren<AudioSource>();
         source.PlayOneShot(source.clip);
         // invoke PowerupCollected event
-        PowerupManager.instance.powerupCollected.Invoke(this);
+        Debug.Log("Coin powerup invoking powerupcollected");
+        powerupCollected.Invoke(this);
     }
 
     // hide the base destroy method
@@ -40,6 +41,7 @@ public class CoinPowerup : BasePowerup
 
         if (result)
         {
+            Debug.Log("Coin powerup asking manager to increase score by 1");
             manager.IncreaseScore(1);
         }
     }
@@ -47,6 +49,6 @@ public class CoinPowerup : BasePowerup
     public override void GameRestart()
     {
         base.GameRestart();
-        this.GetComponent<Animator>().Play("default");
+        this.GetComponentInChildren<Animator>().Play("default");
     }
 }

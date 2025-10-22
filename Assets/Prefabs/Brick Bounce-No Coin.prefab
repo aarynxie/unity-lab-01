@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 8487536314138540762}
   - component: {fileID: 9035272165339765608}
   - component: {fileID: 7184704405881284177}
-  - component: {fileID: 2944960097760575923}
   - component: {fileID: 5968300547490595804}
   - component: {fileID: 2430835183865378725}
   m_Layer: 8
@@ -208,22 +207,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &2944960097760575923
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1045069446440272652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f079d4e185139498f85f363b69f3c581, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CoinPopOut
-  blockAnimator: {fileID: 7184704405881284177}
-  coinAnimator: {fileID: 0}
-  blockBody: {fileID: 5968300547490595804}
-  isBrick: 1
 --- !u!50 &5968300547490595804
 Rigidbody2D:
   serializedVersion: 5

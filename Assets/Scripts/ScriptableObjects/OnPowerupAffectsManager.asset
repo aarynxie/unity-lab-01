@@ -9,8 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc6d312ebe1c1461d99731bd7134e05c, type: 3}
-  m_Name: GameScore
-  m_EditorClassIdentifier: Assembly-CSharp::IntVariable
-  DeveloperDescription: Stores current game score
-  previousHighestValue: 3
+  m_Script: {fileID: 11500000, guid: 9f55f3da63e43452284193cb9fa1d544, type: 3}
+  m_Name: OnPowerupAffectsManager
+  m_EditorClassIdentifier: Assembly-CSharp::PowerupGameEvent

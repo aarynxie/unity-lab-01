@@ -22,19 +22,19 @@ public class HUDManager : Singleton<HUDManager>
     public Transform restartButton;
 
     public GameObject gameOverPanel;
+    public IntVariable gameScore;
 
     override public void Awake()
     {
         base.Awake();
-        GameManager.instance.gameStart.AddListener(GameStart);
-        GameManager.instance.gameRestart.AddListener(GameStart);
-        GameManager.instance.scoreChange.AddListener(SetScore);
-        GameManager.instance.gameOver.AddListener(GameOver);
+        // GameManager.instance.gameStart.AddListener(GameStart);
+        // GameManager.instance.gameRestart.AddListener(GameStart);
+        // GameManager.instance.scoreChange.AddListener(SetScore);
+        // GameManager.instance.gameOver.AddListener(GameOver);
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
     }
 
     // Update is called once per frame
@@ -51,9 +51,9 @@ public class HUDManager : Singleton<HUDManager>
         restartButton.transform.localPosition = restartButtonPosition[0];
     }
 
-    public void SetScore(int score)
+    public void SetScore()
     {
-        scoreText.GetComponent<TextMeshProUGUI>().text = "Score: " + score.ToString();
+        scoreText.GetComponent<TextMeshProUGUI>().text = "Score: " + gameScore.Value.ToString();
     }
 
     public void GameOver()

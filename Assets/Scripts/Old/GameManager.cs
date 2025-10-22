@@ -8,32 +8,30 @@ using UnityEngine.Events;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 
-public class GameManager : Singleton<GameManager>
+public class GameManager : MonoBehaviour, IPowerupApplicable
 {
     public UnityEvent gameStart;
-    public UnityEvent gameRestart;
-    public UnityEvent<int> scoreChange;
-    public UnityEvent gameOver;
 
     //private int score = 0;
+    public UnityEvent updateScore;
 
     public IntVariable gameScore;
 
-    // spawn goomba 
-
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public override void Awake()
-    {
-        base.Awake();
-        DontDestroyOnLoad(this.gameObject);
-    }
+    // public override void Awake()
+    // {
+    //     base.Awake();
+    //     DontDestroyOnLoad(this.gameObject);
+    // }
 
-    void Start()
+    IEnumerator Start()
     {
+        yield return null;
+        Debug.Log("GameManager invoking gameStart");
         gameStart.Invoke();
         Time.timeScale = 1.0f;
-        SetScore(gameScore.Value);
+        SetScore();
 
         // subscribe to scene manager scene change 
         SceneManager.activeSceneChanged += SceneSetup;
@@ -49,31 +47,54 @@ public class GameManager : Singleton<GameManager>
     {
         Debug.Log("GameManager Invoking gameRestart event");
         gameScore.Value = 0;
-        SetScore(gameScore.Value);
-        gameRestart.Invoke();
+        SetScore();
+        // gameRestart.Invoke();
         Time.timeScale = 1.0f;
     }
 
     public void IncreaseScore(int increment)
     {
         gameScore.ApplyChange(increment);
-        SetScore(gameScore.Value);
+        SetScore();
     }
 
-    public void SetScore(int score)
+    public void SetScore()
     {
-        scoreChange.Invoke(score);
+        updateScore.Invoke();
+        // scoreChange.Invoke(score);
     }
 
     public void GameOver()
     {
         Time.timeScale = 0.0f;
-        gameOver.Invoke();
+        // gameOver.Invoke();
+    }
+
+    public void UpdateScore()
+    {
+        updateScore.Invoke();
     }
 
     public void SceneSetup(Scene current, Scene next)
     {
         gameStart.Invoke();
-        SetScore(gameScore.Value);
+        SetScore();
+    }
+
+    public void RequestPowerupEffect(IPowerup i)
+    {
+        // Debug.Log("GameManager requesting powerup effect");
+        // increase score
+        i.ApplyPowerup(this);
+    }
+
+    public void PauseGame()
+    {
+        //todo: pause game
+    }
+
+    public void ResumeGame()
+    {
+        //todo:resume game
     }
 }

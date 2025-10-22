@@ -12,8 +12,7 @@ GameObject:
   - component: {fileID: 4612896203315582377}
   - component: {fileID: 3011834853671402304}
   - component: {fileID: 7870611009073067472}
-  - component: {fileID: 8749956082971546020}
-  - component: {fileID: 69413273150981242}
+  - component: {fileID: 2883976670279353794}
   m_Layer: 0
   m_Name: Coin (2)
   m_TagString: Untagged
@@ -30,11 +29,11 @@ Transform:
   m_GameObject: {fileID: 2353890804154282731}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.02, y: 0.03, z: 0}
+  m_LocalPosition: {x: 0.01999998, y: 0.03, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3100461714648798501}
+  m_Father: {fileID: 5002815597213246352}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4612896203315582377
 SpriteRenderer:
@@ -213,7 +212,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &8749956082971546020
+--- !u!114 &2883976670279353794
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -228,32 +227,18 @@ MonoBehaviour:
   useEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 69413273150981242}
-        m_TargetAssemblyTypeName: CoinPowerup, Assembly-CSharp
-        m_MethodName: SpawnPowerup
-        m_Mode: 1
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &69413273150981242
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2353890804154282731}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4341b4f97182407e9718559e65cb272, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CoinPowerup
-  type: 0
-  spawned: 0
 --- !u!1 &2614720442631717074
 GameObject:
   m_ObjectHideFlags: 0
@@ -288,7 +273,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5105539449254788598}
-  - {fileID: 7528941954109960764}
+  - {fileID: 5002815597213246352}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &5414410521759924872
@@ -463,7 +448,8 @@ GameObject:
   - component: {fileID: 6291535877901818854}
   - component: {fileID: 5050172530686411966}
   - component: {fileID: 3912742331653316335}
-  - component: {fileID: 8043503342382850258}
+  - component: {fileID: 3377299134714074375}
+  - component: {fileID: 1995020186153788301}
   m_Layer: 8
   m_Name: Question-Box-1
   m_TagString: Coin
@@ -800,7 +786,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &8043503342382850258
+--- !u!114 &3377299134714074375
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -813,4 +799,108 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::QuestionBoxPowerupController
   powerupAnimator: {fileID: 3011834853671402304}
-  powerup: {fileID: 69413273150981242}
+  powerup: {fileID: 0}
+--- !u!114 &1995020186153788301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5556608360925221099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d5ad8eba85484608b48f80669ac1dfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SimpleGameEventListener
+  Event: {fileID: 11400000, guid: f5391832d9d24401cb7748f69247611c, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3377299134714074375}
+        m_TargetAssemblyTypeName: QuestionBoxPowerupController, Assembly-CSharp
+        m_MethodName: GameRestart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: CoinPowerup, Assembly-CSharp
+        m_MethodName: GameRestart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!1 &6956014173391353742
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5002815597213246352}
+  - component: {fileID: 7904015265277457565}
+  m_Layer: 8
+  m_Name: Powerup
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5002815597213246352
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6956014173391353742}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7528941954109960764}
+  m_Father: {fileID: 3100461714648798501}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7904015265277457565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6956014173391353742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4341b4f97182407e9718559e65cb272, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CoinPowerup
+  type: 0
+  spawned: 0
+  onGameRestart: {fileID: 11400000, guid: f5391832d9d24401cb7748f69247611c, type: 2}
+  onPowerupCollected: {fileID: 11400000, guid: 0b4fd36bfb58c412dbdd467eaf409865, type: 2}
+  powerupCollected:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 0b4fd36bfb58c412dbdd467eaf409865, type: 2}
+        m_TargetAssemblyTypeName: PowerupGameEvent, Assembly-CSharp
+        m_MethodName: Raise
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

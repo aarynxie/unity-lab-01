@@ -5,6 +5,8 @@ using TMPro;
 using UnityEditor.Build.Content;
 using System.Xml.Schema;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
+using UnityEngine.UIElements;
 
 public class PlayerMovement : Singleton<PlayerMovement>
 {
@@ -40,18 +42,14 @@ public class PlayerMovement : Singleton<PlayerMovement>
 
     private bool jumpedState = false;
 
-    private GameManager gameManager;
-
     override public void Awake()
     {
         base.Awake();
-        GameManager.instance.gameRestart.AddListener(GameRestart);
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        gameManager = GameManager.instance;
 
         speed = gameConstants.speed;
         maxSpeed = gameConstants.maxSpeed;
@@ -206,5 +204,10 @@ public class PlayerMovement : Singleton<PlayerMovement>
 
         // reset cam pos
         gameCamera.position = new Vector3(0, 0, -10);
+    }
+
+    public void RequestPowerupEffect()
+    {
+        //todo: request powerup
     }
 }
