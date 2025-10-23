@@ -26,6 +26,7 @@ public class StateController : MonoBehaviour
     {
         // reset time in this state
         stateTimeElapsed = 0;
+
         if (currentState)
             currentState.DoExitActions(this);
     }
@@ -63,6 +64,7 @@ public class StateController : MonoBehaviour
     public bool CheckIfCountDownElapsed(float duration)
     {
         stateTimeElapsed += Time.deltaTime;
+        Debug.Log($"counting down, time elapsed{stateTimeElapsed}, duration of buff: {duration}");
         return stateTimeElapsed >= duration;
     }
 

@@ -10,19 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5605f9f8584a74a3bbc4982de71dfd79, type: 3}
-  m_Name: SuperMario
+  m_Name: Invincible
   m_EditorClassIdentifier: Assembly-CSharp::State
   setupActions:
-  - {fileID: 11400000, guid: 78b34f6d0d5a44de0ab2a6dde583601e, type: 2}
-  - {fileID: 11400000, guid: bd74295aa4acb44ce9033a64fc0b8abe, type: 2}
+  - {fileID: 11400000, guid: f1c5b3cc6b134466aa166a86a3293922, type: 2}
+  - {fileID: 11400000, guid: 81bfa8cf307f44e288c5d9956e39d11e, type: 2}
   actions: []
   eventTriggeredActions: []
-  exitActions: []
+  exitActions:
+  - {fileID: 11400000, guid: 433b5405f9cc247968da2b5c33a4d480, type: 2}
   transitions:
-  - decision: {fileID: 11400000, guid: 332f5d76b24ff41b681b354488f26e55, type: 2}
-    trueState: {fileID: 11400000, guid: f583974303c67421d948738a0557f06e, type: 2}
-    falseState: {fileID: 11400000, guid: 69bdc005ae8a3491180db3747cef79fc, type: 2}
-  - decision: {fileID: 11400000, guid: 98b1e5ea7628b493f8a5a70000b8f068, type: 2}
-    trueState: {fileID: 11400000, guid: 217eff0119e9a44f4aba352e2769c5fa, type: 2}
+  - decision: {fileID: 11400000, guid: 2f431887db85f4075bd92f0a4b88a8da, type: 2}
+    trueState: {fileID: 11400000, guid: 32b034c3ee43d4ad59fd6a4c6ee2b5e4, type: 2}
     falseState: {fileID: 11400000, guid: 69bdc005ae8a3491180db3747cef79fc, type: 2}
   sceneGizmoColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}

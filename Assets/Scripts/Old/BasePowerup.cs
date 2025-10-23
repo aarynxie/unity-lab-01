@@ -43,6 +43,7 @@ public abstract class BasePowerup : MonoBehaviour, IPowerup
         //Destroy(this.gameObject);
         //this.gameObject.SetActive(false);
         this.gameObject.GetComponentInChildren<SpriteRenderer>().enabled = false;
+        this.gameObject.GetComponent<BoxCollider2D>().enabled = false;
     }
 
     protected virtual void OnCollisionEnter2D(Collision2D col)
@@ -72,6 +73,7 @@ public abstract class BasePowerup : MonoBehaviour, IPowerup
         spawned = false;
         goRight = true;
         //this.gameObject.SetActive(true);
+        this.gameObject.GetComponent<BoxCollider2D>().enabled = true;
         this.gameObject.GetComponentInChildren<SpriteRenderer>().enabled = true;
     }
 

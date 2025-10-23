@@ -3,28 +3,26 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 
-public class MagicMushroomPowerup : BasePowerup
+public class StarMan : BasePowerup
 {
-    public Animator mushroomAnimator;
+    public Animator starAnimator;
     private Vector3 startingPos = new Vector3(0f, 0.999f, 0f);
     // set up this object's type
 
-    [SerializeField] private GameObject mushroomChild;
+    [SerializeField] private GameObject starChild;
 
     //instantiate variables
     protected override void Start()
     {
         base.Start();
-        this.type = PowerupType.MagicMushroom;
-        //TODO FIXGameManager.instance.gameRestart.AddListener(GameRestart);
-        mushroomAnimator = GetComponentInChildren<Animator>();
+        this.type = PowerupType.StarMan;
+        starAnimator = GetComponentInChildren<Animator>();
     }
 
     // interface implementation
     public override void SpawnPowerup()
     {
         spawned = true;
-        //rigidBody.typ
         rigidBody.bodyType = RigidbodyType2D.Dynamic;
         gameObject.GetComponent<Collider2D>().enabled = true;
 
@@ -41,14 +39,15 @@ public class MagicMushroomPowerup : BasePowerup
     // interface implementation
     public override void ApplyPowerup(MonoBehaviour i)
     {
-        Debug.Log("MagicMushroomPowerup running AppyPowerup");
+        Debug.Log("StarManPowerup running AppyPowerup");
         // do something with the object
         // try
-        MarioStateController mario;
-        bool result = i.TryGetComponent<MarioStateController>(out mario);
+        BuffStateController buff;
+        bool result = i.TryGetComponent<BuffStateController>(out buff);
         if (result)
         {
-            mario.SetPowerup(this.powerupType);
+            Debug.Log("sending buff to buffcontroller");
+            buff.SetBuff(this.powerupType);
         }
     }
 
@@ -59,9 +58,9 @@ public class MagicMushroomPowerup : BasePowerup
         // reset position of rigid body
         rigidBody.bodyType = RigidbodyType2D.Static;
         gameObject.GetComponent<Collider2D>().enabled = false;
-        mushroomChild.transform.localPosition = new Vector3(0, 0, 0);
+        starChild.transform.localPosition = new Vector3(0, 0, 0);
         gameObject.transform.localPosition = startingPos;
-        mushroomAnimator.Play("Mushroom-idle");
+        starAnimator.Play("Mushroom-idle");
         //gameObject.GetComponent<Anim
     }
 }

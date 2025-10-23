@@ -46,6 +46,8 @@ public class PlayerMovement : MonoBehaviour
     public BoolVariable marioFaceRight;
     public UnityEvent damagePlayer;
 
+    public AudioSource powerupSound;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -137,7 +139,7 @@ public class PlayerMovement : MonoBehaviour
     void PlayDeathImpulse()
     {
         marioBody.AddForce(Vector2.up * deathImpulse, ForceMode2D.Impulse);
-        marioDeathAudio.PlayOneShot(marioDeathAudio.clip);
+        if (!marioDeathAudio.isPlaying) marioDeathAudio.PlayOneShot(marioDeathAudio.clip);
         alive = false;
     }
 
@@ -209,9 +211,13 @@ public class PlayerMovement : MonoBehaviour
         gameCamera.position = new Vector3(0, 0, -10);
     }
 
-    public void RequestPowerupEffect()
+    public void RequestPowerupEffect(IPowerup i)
     {
+        Debug.Log("PlayerMovement requestpowerupeffect");
         //todo: request powerup
+        // pass this to magic mushroom via ApplyPowerup
+        i.ApplyPowerup(this);
+
     }
 
     private void updateMarioShouldFaceRight(bool value)
@@ -226,5 +232,10 @@ public class PlayerMovement : MonoBehaviour
         // pass this to stateController to see if Mario should die
         // can cross refer to mariostatecontroller because they're on the same gamobject
         GetComponent<MarioStateController>().SetPowerup(PowerupType.Damage);
+    }
+
+    void PlayPowerupSound()
+    {
+        powerupSound.PlayOneShot(powerupSound.clip);
     }
 }

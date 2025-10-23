@@ -10,16 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5605f9f8584a74a3bbc4982de71dfd79, type: 3}
-  m_Name: InvincibleSmallMario
+  m_Name: Default
   m_EditorClassIdentifier: Assembly-CSharp::State
   setupActions:
-  - {fileID: 11400000, guid: e8b1650893864422f9d2b454789da567, type: 2}
-  - {fileID: 11400000, guid: bd74295aa4acb44ce9033a64fc0b8abe, type: 2}
+  - {fileID: 11400000, guid: f1c5b3cc6b134466aa166a86a3293922, type: 2}
   actions: []
   eventTriggeredActions: []
   exitActions: []
   transitions:
-  - decision: {fileID: 11400000, guid: 738017bb7506146788081d44443b7efe, type: 2}
-    trueState: {fileID: 11400000, guid: 5703511d133344bdba24fc1813a5e6cf, type: 2}
-    falseState: {fileID: 11400000, guid: 69bdc005ae8a3491180db3747cef79fc, type: 2}
+  - decision: {fileID: 11400000, guid: b36b97b3d3c9244949996024634dd57d, type: 2}
+    trueState: {fileID: 11400000, guid: 9616842450c5746e5a3182f993d0414c, type: 2}
+    falseState: {fileID: 11400000}
   sceneGizmoColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}

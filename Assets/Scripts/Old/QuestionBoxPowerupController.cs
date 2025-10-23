@@ -16,11 +16,15 @@ public class QuestionBoxPowerupController : MonoBehaviour, IPowerupController
 
     private void OnCollisionEnter2D(Collision2D other)
     {
+        Debug.Log("QuestionBoxPowerup Controller collided with somethig");
         if (other.gameObject.tag == "Mario" && !powerup.hasSpawned)
         {
+            Debug.Log("QuestionBoxPowerup Controller collided with mario & powerup has not spawned");
             this.GetComponent<Animator>().SetTrigger("spawned");
             powerupAnimator.SetTrigger("spawned");
             Debug.Log("setting trigger");
+            AudioSource source = this.GetComponent<AudioSource>();
+            source.PlayOneShot(source.clip);
         }
     }
 
@@ -32,8 +36,8 @@ public class QuestionBoxPowerupController : MonoBehaviour, IPowerupController
 
     public void GameRestart()
     {
+        Debug.Log("Questionbox restart called");
         powerupAnimator.ResetTrigger("spawned");
         this.GetComponent<Animator>().Play("idle");
-
     }
 }

@@ -26,6 +26,7 @@ public class EnemyManager : MonoBehaviour
     {
         if (currentGoomba != null)
         {
+            Debug.Log("Destroying current goomba");
             Destroy(currentGoomba);
         }
         SpawnEnemy(goombaPrefab, goombaSpawnPos);
@@ -38,6 +39,7 @@ public class EnemyManager : MonoBehaviour
 
     void SpawnEnemy(GameObject prefab, Vector3 position)
     {
+        Debug.Log("EnemyMnaager spawning enemy");
         currentGoomba = Instantiate(prefab, position, Quaternion.identity, enemyParent);
         currentGoomba.SetActive(true);
     }

@@ -1,49 +1,42 @@
 using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 
-public class MagicMushroomPowerup : BasePowerup
+public class FireFlowerPowerup : BasePowerup
 {
-    public Animator mushroomAnimator;
-    private Vector3 startingPos = new Vector3(0f, 0.999f, 0f);
-    // set up this object's type
+    public Animator fireFlowerAnimator;
+    private Vector3 startingPos = new Vector3(0, 1, 0);
 
-    [SerializeField] private GameObject mushroomChild;
-
-    //instantiate variables
+    [SerializeField] private GameObject fireFlowerChild;
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected override void Start()
     {
         base.Start();
-        this.type = PowerupType.MagicMushroom;
-        //TODO FIXGameManager.instance.gameRestart.AddListener(GameRestart);
-        mushroomAnimator = GetComponentInChildren<Animator>();
+        this.type = PowerupType.FireFlower;
+        fireFlowerAnimator = GetComponentInChildren<Animator>();
     }
 
-    // interface implementation
     public override void SpawnPowerup()
     {
+        Debug.Log("FireFlowerPowerup spawned powerup");
         spawned = true;
-        //rigidBody.typ
         rigidBody.bodyType = RigidbodyType2D.Dynamic;
         gameObject.GetComponent<Collider2D>().enabled = true;
 
+        // waiting for next frame because cannot set rb body type to dynamci and addforce in the same frame
         StartCoroutine(WaitNextFrame());
+
     }
 
     IEnumerator WaitNextFrame()
     {
-        // suspend execution for 5 seconds
         yield return new WaitForEndOfFrame();
         rigidBody.AddForce(Vector2.right * 3, ForceMode2D.Impulse);
     }
 
-    // interface implementation
+    //implement interface
     public override void ApplyPowerup(MonoBehaviour i)
     {
-        Debug.Log("MagicMushroomPowerup running AppyPowerup");
-        // do something with the object
-        // try
+        Debug.Log("FlowerFlowerPowerup running applypowerup");
         MarioStateController mario;
         bool result = i.TryGetComponent<MarioStateController>(out mario);
         if (result)
@@ -54,14 +47,12 @@ public class MagicMushroomPowerup : BasePowerup
 
     public override void GameRestart()
     {
-        Debug.Log("magicmushroompowerup running gamerestart");
         base.GameRestart();
-        // reset position of rigid body
+        // reset
         rigidBody.bodyType = RigidbodyType2D.Static;
         gameObject.GetComponent<Collider2D>().enabled = false;
-        mushroomChild.transform.localPosition = new Vector3(0, 0, 0);
+        fireFlowerChild.transform.localPosition = new Vector3(0, 0, 0);
         gameObject.transform.localPosition = startingPos;
-        mushroomAnimator.Play("Mushroom-idle");
-        //gameObject.GetComponent<Anim
+        fireFlowerAnimator.Play("Mushroom-idle"); // TODO change this animation later
     }
 }

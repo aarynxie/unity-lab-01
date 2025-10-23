@@ -1,38 +1,30 @@
+using UnityEngine;
 using System;
 using System.Collections;
-using UnityEngine;
 
-public class MarioStateController : StateController
+public class BuffStateController : StateController
 {
-    public PowerupType currentPowerupType = PowerupType.Default;
-    public MarioState shouldBeNextState = MarioState.Default;
+    public PowerupType currentPowerupTypeBuff = PowerupType.Default;
+    public MarioState shouldBeNextStateBuff = MarioState.Default;
 
     private SpriteRenderer spriteRenderer;
     public GameConstants gameConstants;
 
+
     public override void Start()
     {
         base.Start();
-        GameRestart(); // clear powerup in the beginning, go to start state
+        GameRestart();
     }
-
     public void GameRestart()
     {
-        // need to call this before 
-        // right now it's attemping to set vaiables for small mario befoer the animator switches
-        // so need to run this before playermovement's gamerestart
-        // clear powerup
-        currentPowerupType = PowerupType.Default;
-        // set the start state
-        TransitionToState(startState);
-
-        GetComponent<PlayerMovement>().GameRestart();
-
+        // restart the game
+        currentPowerupTypeBuff = PowerupType.Default;
     }
 
-    public void SetPowerup(PowerupType i)
+    public void SetBuff(PowerupType i)
     {
-        currentPowerupType = i;
+        currentPowerupTypeBuff = i;
     }
 
     public void SetRendererToFlicker()
@@ -44,7 +36,7 @@ public class MarioStateController : StateController
     IEnumerator BlinkSpriteRenderer()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        while (string.Equals(currentState.name, "InvincibleSmallMario", StringComparison.OrdinalIgnoreCase))
+        while (string.Equals(currentState.name, "Invincible", StringComparison.OrdinalIgnoreCase))
         {
             Debug.Log("running blinking");
             // toggle the visibility of the sprite renderer
@@ -56,4 +48,6 @@ public class MarioStateController : StateController
 
         spriteRenderer.enabled = true;
     }
+
+
 }

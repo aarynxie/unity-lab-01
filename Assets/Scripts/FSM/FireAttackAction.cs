@@ -12,8 +12,10 @@ public class FireAttackAction : Action
 
     public override void Act(StateController controller)
     {
+
         GameObject[] instantiatedPrefabsInScene = GameObject.FindGameObjectsWithTag(attackPrefab.tag);
-        if (instantiatedPrefabsInScene.Length > maxPrefabInScene)
+        Debug.Log($"FireAttackAction attack is called, there are{instantiatedPrefabsInScene.Length} fireballs");
+        if (instantiatedPrefabsInScene.Length < maxPrefabInScene)
         {
             // instantiate it where controller (mario) is
             GameObject x = Instantiate(attackPrefab, controller.transform.position, Quaternion.identity);

@@ -30,6 +30,7 @@ public class PowerupManager : MonoBehaviour
                 powerupAffectsManager.Invoke(powerup);
                 break;
             case PowerupType.MagicMushroom:
+            case PowerupType.FireFlower:
             case PowerupType.OneUpMushroom:
             case PowerupType.StarMan:
                 Debug.Log("PowerupManager FilterAndCastPowerup not coin");
