@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b82f6dc635b97460b89085681c607157, type: 3}
   m_Name: SetupFireMario
   m_EditorClassIdentifier: Assembly-CSharp::SetupAnimatorAction
-  animatorController: {fileID: 0}
+  animatorController: {fileID: 9100000, guid: 3da30fba2aadd45ab99524c0a0d1c44a, type: 2}

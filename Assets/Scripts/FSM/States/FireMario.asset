@@ -12,9 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5605f9f8584a74a3bbc4982de71dfd79, type: 3}
   m_Name: FireMario
   m_EditorClassIdentifier: Assembly-CSharp::State
-  setupActions: []
+  setupActions:
+  - {fileID: 11400000, guid: a7322e43e99b14ddebfd2b7899053ed1, type: 2}
+  - {fileID: 11400000, guid: bd74295aa4acb44ce9033a64fc0b8abe, type: 2}
   actions: []
-  eventTriggeredActions: []
+  eventTriggeredActions:
+  - action: {fileID: 11400000, guid: 2926978a8f30245a8abdbf99c84df9f0, type: 2}
+    type: 0
   exitActions: []
-  transitions: []
+  transitions:
+  - decision: {fileID: 11400000, guid: 332f5d76b24ff41b681b354488f26e55, type: 2}
+    trueState: {fileID: 11400000, guid: f583974303c67421d948738a0557f06e, type: 2}
+    falseState: {fileID: 11400000, guid: 69bdc005ae8a3491180db3747cef79fc, type: 2}
   sceneGizmoColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}

@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 881950f00c9f14ff8bec32dfc870ff59, type: 3}
   m_Name: InvincibleAction
   m_EditorClassIdentifier: Assembly-CSharp::InvincibleAction
-  invincibilityStart: {fileID: 0}
+  invincibilityStart: {fileID: 8300000, guid: b520e6b32619c490a934225b9b162dc2, type: 3}

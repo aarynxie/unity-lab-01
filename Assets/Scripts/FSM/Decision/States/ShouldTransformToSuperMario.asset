@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a62276a681b054540964c4165e4916f1, type: 3}
   m_Name: ShouldTransformToSuperMario
   m_EditorClassIdentifier: Assembly-CSharp::TransformDecision
-  map: []
+  map:
+  - fromState: 0
+    powerupCollected: 1
+  - fromState: 0
+    powerupCollected: 4

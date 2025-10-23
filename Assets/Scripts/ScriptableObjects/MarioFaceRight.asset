@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ff500e7d7f51431fa008a57ee21bb4c, type: 3}
   m_Name: MarioFaceRight
   m_EditorClassIdentifier: Assembly-CSharp::BoolVariable
-  DeveloperDescription: 
+  DeveloperDescription: whether mario is facing right
