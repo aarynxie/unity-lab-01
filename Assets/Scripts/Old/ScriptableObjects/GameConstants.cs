@@ -14,6 +14,8 @@ public class GameConstants : ScriptableObject
     // goomba movement
     public float goombaPatrolTime;
     public float goombaMaxOffset;
+
+    public int flickerInterval;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

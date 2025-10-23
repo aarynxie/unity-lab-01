@@ -28,7 +28,6 @@ public class GameManager : MonoBehaviour, IPowerupApplicable
     IEnumerator Start()
     {
         yield return null;
-        Debug.Log("GameManager invoking gameStart");
         gameStart.Invoke();
         Time.timeScale = 1.0f;
         SetScore();
@@ -45,7 +44,6 @@ public class GameManager : MonoBehaviour, IPowerupApplicable
 
     public void GameRestart()
     {
-        Debug.Log("GameManager Invoking gameRestart event");
         gameScore.Value = 0;
         SetScore();
         // gameRestart.Invoke();

@@ -336,7 +336,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d5ad8eba85484608b48f80669ac1dfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SImpleGameEventListener
-  Event: {fileID: 11400000, guid: ab302da0d46554b34882ab72716e09ee, type: 2}
+  Event: {fileID: 11400000, guid: f5391832d9d24401cb7748f69247611c, type: 2}
   Response:
     m_PersistentCalls:
       m_Calls:

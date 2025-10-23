@@ -24,4 +24,9 @@ public class AnimationEventTool : MonoBehaviour
         //GameManager.instance.gameOver.Invoke();
         gameOver.Invoke();
     }
+
+    public void debugFunciton()
+    {
+        Debug.Log("running on the 2nd frame of the mario die anim");
+    }
 }

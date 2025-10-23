@@ -2,16 +2,12 @@ using UnityEngine;
 using UnityEngine.Events;
 
 
-public class PowerupManager : Singleton<PowerupManager>
+public class PowerupManager : MonoBehaviour
 {
 
     public UnityEvent<IPowerup> powerupAffectsManager;
 
     public UnityEvent<IPowerup> powerupAffectsPlayer;
-    public override void Awake()
-    {
-        base.Awake();
-    }
     void Start()
     {
 

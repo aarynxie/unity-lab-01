@@ -2,11 +2,13 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
-public class ActionManager : Singleton<ActionManager>
+public class ActionManager : MonoBehaviour
 {
     public UnityEvent jump;
     public UnityEvent jumpHold;
     public UnityEvent<int> moveCheck;
+
+    public UnityEvent attack;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -64,6 +66,15 @@ public class ActionManager : Singleton<ActionManager>
         {
             Vector2 point = context.ReadValue<Vector2>();
             // Debug.Log($"Point detection: {point}");
+        }
+    }
+
+    public void OnAttackAction(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            Debug.Log("attack button pressed");
+            attack.Invoke();
         }
     }
 }

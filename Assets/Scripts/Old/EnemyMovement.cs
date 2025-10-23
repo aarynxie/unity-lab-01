@@ -79,31 +79,18 @@ public class EnemyMovement : MonoBehaviour
     // call this method when head trigger is hit
     public void GoombaDie()
     {
-        Debug.Log("EnemyMovement called goombadie");
         if (!dead)
         {
-            Debug.Log("EnemyMovement called goombadie and goomba is not dead");
             dead = true;
             // play death animation & sound here
             //gameManager.IncreaseScore(1);
             increaseScore.Invoke(1);
 
-            Debug.Log(GoombaAnimator);
             GoombaAnimator.Play("goomba-die");
 
             // destroy gameObject after 1 sec
             Destroy(gameObject, 1f);
-            //StartCoroutine(waitOneSec());
-
-
         }
-
-        // IEnumerator waitOneSec()
-        // {
-        //     // suspend execution for 1 second
-        //     yield return new WaitForSeconds(1f);
-        //     gameObject.SetActive(false);
-        // }
     }
 
     void PlayGoombaSound()

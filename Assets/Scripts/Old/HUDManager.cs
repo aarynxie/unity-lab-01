@@ -2,7 +2,7 @@ using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 
-public class HUDManager : Singleton<HUDManager>
+public class HUDManager : MonoBehaviour
 {
     // public GameObject highestscoreText;
     // public IntVariable gameScore;
@@ -24,14 +24,6 @@ public class HUDManager : Singleton<HUDManager>
     public GameObject gameOverPanel;
     public IntVariable gameScore;
 
-    override public void Awake()
-    {
-        base.Awake();
-        // GameManager.instance.gameStart.AddListener(GameStart);
-        // GameManager.instance.gameRestart.AddListener(GameStart);
-        // GameManager.instance.scoreChange.AddListener(SetScore);
-        // GameManager.instance.gameOver.AddListener(GameOver);
-    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

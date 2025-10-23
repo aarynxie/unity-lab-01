@@ -7,8 +7,9 @@ using System.Xml.Schema;
 using UnityEngine.SceneManagement;
 using UnityEngine.Events;
 using UnityEngine.UIElements;
+using System.Linq.Expressions;
 
-public class PlayerMovement : Singleton<PlayerMovement>
+public class PlayerMovement : MonoBehaviour
 {
     public GameConstants gameConstants;
 
@@ -42,10 +43,8 @@ public class PlayerMovement : Singleton<PlayerMovement>
 
     private bool jumpedState = false;
 
-    override public void Awake()
-    {
-        base.Awake();
-    }
+    public BoolVariable marioFaceRight;
+    public UnityEvent damagePlayer;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -75,7 +74,8 @@ public class PlayerMovement : Singleton<PlayerMovement>
     // Update is called once per frame
     void Update()
     {
-        marioAnimator.SetFloat("xSpeed", Mathf.Abs(marioBody.linearVelocity.x));
+        if (alive)
+            marioAnimator.SetFloat("xSpeed", Mathf.Abs(marioBody.linearVelocity.x));
     }
 
     // flip mario sprite based on direction
@@ -83,7 +83,7 @@ public class PlayerMovement : Singleton<PlayerMovement>
     {
         if (value == -1 && faceRightState)
         {
-            faceRightState = false;
+            updateMarioShouldFaceRight(false);
             marioSprite.flipX = true;
             if (marioBody.linearVelocity.x > 0.05f)
                 marioAnimator.SetTrigger("onSkid");
@@ -91,7 +91,7 @@ public class PlayerMovement : Singleton<PlayerMovement>
 
         if (value == 1 && !faceRightState)
         {
-            faceRightState = true;
+            updateMarioShouldFaceRight(true);
             marioSprite.flipX = false;
             if (marioBody.linearVelocity.x < -0.05f)
                 marioAnimator.SetTrigger("onSkid");
@@ -112,13 +112,11 @@ public class PlayerMovement : Singleton<PlayerMovement>
     {
         // if mario collides with goomba, mario dies
         // don't trigger this if goomba is not alive
+        // TODO: change this to onplayerdamage instead
         if (other.gameObject.CompareTag("Enemy") && alive && other.gameObject.activeSelf)
         {
             Debug.Log("PlayerMovement collided with goomba!");
-
-            marioAnimator.Play("mario-die");
-            marioDeathAudio.PlayOneShot(marioDeathAudio.clip);
-            alive = false;
+            damagePlayer.Invoke();
         }
     }
 
@@ -139,6 +137,8 @@ public class PlayerMovement : Singleton<PlayerMovement>
     void PlayDeathImpulse()
     {
         marioBody.AddForce(Vector2.up * deathImpulse, ForceMode2D.Impulse);
+        marioDeathAudio.PlayOneShot(marioDeathAudio.clip);
+        alive = false;
     }
 
     // moves mario if mario has not exceeded max speed 
@@ -196,10 +196,13 @@ public class PlayerMovement : Singleton<PlayerMovement>
         // reset marios position 
         marioBody.transform.position = new Vector3(-3.04f, 0.0f, 0.0f);
         // reset sprite direction
-        faceRightState = true;
+        updateMarioShouldFaceRight(true);
         marioSprite.flipX = false;
+        onGroundState = true;
+        marioAnimator.SetBool("onGround", onGroundState);
 
         marioAnimator.SetTrigger("gameRestart");
+        //marioAnimator.Play("mario-idle");
         alive = true;
 
         // reset cam pos
@@ -209,5 +212,19 @@ public class PlayerMovement : Singleton<PlayerMovement>
     public void RequestPowerupEffect()
     {
         //todo: request powerup
+    }
+
+    private void updateMarioShouldFaceRight(bool value)
+    {
+        faceRightState = value;
+        marioFaceRight.SetValue(faceRightState);
+    }
+
+    // called when OnDamagePlayer is invoked
+    public void DamageMario()
+    {
+        // pass this to stateController to see if Mario should die
+        // can cross refer to mariostatecontroller because they're on the same gamobject
+        GetComponent<MarioStateController>().SetPowerup(PowerupType.Damage);
     }
 }
